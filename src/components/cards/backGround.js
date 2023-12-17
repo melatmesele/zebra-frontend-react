@@ -7,12 +7,12 @@ import myCost from "../../assets/My-cost.jpg";
 import CardContent from "./cardContent";
 const Card = ({ text }) => {
   return (
-    <div className="flex justify-center self-center my-20 ">
+    <div className="flex justify-center self-center my-4">
       <div className="w-[200px] h-[140px] bg-primary-gray rounded-lg">
         <div className="flex justify-center">
-          <div className="h-20 w-20 -mt-6 ">
+          <div className="h-20 w-20 -mt-6">
             <img
-              className="transform h-full w-full  rounded-lg object-cover flex justify-center"
+              className="transform h-full w-full rounded-lg object-cover flex justify-center"
               src={
                 text === "TOTAL"
                   ? textile

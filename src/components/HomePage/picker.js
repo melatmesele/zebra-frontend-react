@@ -48,7 +48,7 @@ const StartDatePicker = () => {
   }
 
   return (
-    <div className="container -mr-[50px]  ">
+    <div className="container">
       <div className=" w-auto h-auto ">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DemoContainer components={["DatePicker"]}>
