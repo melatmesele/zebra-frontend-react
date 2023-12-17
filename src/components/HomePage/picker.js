@@ -4,10 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   setSprintId,
   setIsSprintActive,
-  setStartDate,
+ 
 } from "../store/sprintSlice";
 
-import Cookies from "js-cookie";
 import dayjs from "dayjs";
 import { getExpenseData } from "../../api-helper-function/apiCallerFunction";
 import { SelectedDate } from "../../api-helper-function/apiCallerFunction"; // Import your API function for sending data to the backend
@@ -18,11 +17,11 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useState, useEffect } from "react";
-import { setUserId } from "../store/userId";
+
 const StartDatePicker = () => {
   const isSprintActive = useSelector((state) => state.sprint.isSprintActive);
   const startDate = useSelector((state) => state.sprint.startDate);
-  const userId = useSelector((state) => state.userId.userId);
+
 
   const dispatch = useDispatch();
   useEffect(() => {

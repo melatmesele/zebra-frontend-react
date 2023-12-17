@@ -56,7 +56,7 @@ const RegistrationForm = () => {
       try {
         const data = await register(formData);
         if (data && data.status === true) {
-          navigate("/login");
+          navigate("/");
         } else {
           // Handle registration failure, show error message, etc.
           setEmailErrors(data.message);

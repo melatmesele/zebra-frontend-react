@@ -20,7 +20,7 @@ const UserLogin = () => {
     try {
       const loggedIn = await Login(formData);
       if (loggedIn) {
-        navigate("/");
+        navigate("/homePage");
       } else {
         // Clear the password field
         setError("Invalid email or password");
