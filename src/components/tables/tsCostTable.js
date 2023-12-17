@@ -10,7 +10,7 @@ import { setTsCostSpent } from "../../store/tsCostSlice";
 const TsCostDataTable = () => {
   // const [tsCostData, setTsCostData] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [spent, setSpent] = useState(0);
+  const [cost, setCost] = useState(0);
   const tsCostData = useSelector((state) => state.tsCost.tsCostSpent);
   const dispatch = useDispatch();
 
@@ -28,6 +28,12 @@ const TsCostDataTable = () => {
   }, [dispatch]);
   // Function to format the date as "yyyy/mm/dd"
   // Function to format the date as "year/month/date"
+  const minDate = new Date(
+    Math.min(...tsCostData.map((item) => new Date(item.date)))
+  );
+  const maxDate = new Date(
+    Math.max(...tsCostData.map((item) => new Date(item.date)))
+  );
   const formatSelectedDate = (date) => {
     const year = date.getFullYear();
     const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Adding 1 because getMonth() returns 0-based month
@@ -49,18 +55,18 @@ const TsCostDataTable = () => {
 
       if (selectedId) {
         try {
-          const response = await addTsCostData(selectedId, spent);
+          const response = await addTsCostData(selectedId, cost);
           // Update the foamData state with the modified data
           if (response) {
             const updatedTsCostData = tsCostData.map((item) =>
               item.id === selectedId
                 ? {
                     ...item,
-                    sold: response.spent,
+                    spent: response.spent,
                   }
                 : item
             );
-            dispatch(setSpent(updatedTsCostData));
+            dispatch(setTsCostSpent(updatedTsCostData));
           }
         } catch (error) {
           console.error("Error sending data to the backend:", error);
@@ -74,25 +80,62 @@ const TsCostDataTable = () => {
   };
 
   return (
-    <div className="bg-white">
-      <div className="flex">
-        <label>Select Date:</label>
-        <DatePicker
-          selected={selectedDate}
-          onChange={(date) => setSelectedDate(date)}
-          className="border p-2 rounded"
-          dateFormat="yyyy/MM/dd"
-        />
-        <label>Ts-cost:</label>
-        <input
-          type="number"
-          value={spent}
-          onChange={(e) => setSpent(e.target.value)}
-        />
+    <div className="bg-white w-full md:w-[719px] mx-auto mt-10 md:ml-[310px] md:mt-[56px] border-4 border-primary">
+      <div className="text-2xl ml-4 md:ml-[30px]">Ts-Cost Data Table</div>
+      <div className="flex space-x-5">
+        <div className="">
+          <div
+            className="space-y-3 flex flex-col  max-w-md mx-auto p-8 h-400 w-full bg-white "
+            action="#"
+            method="POST"
+          >
+            <div className="mt-[3px] ">
+              <div className="flex items-center justify-between">
+                <label className=" text-lg pt-2">Select Date</label>
+              </div>
+              <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                className="border-color-rgb(203 213 225) mt-2 rounded w-[195px] h-[30px] "
+                dateFormat="yyyy/MM/dd"
+                minDate={minDate}
+                maxDate={maxDate}
+              />
+            </div>
 
-        <button onClick={handleSendData}>Send Data to Backend</button>
+            <div className="mt-[9px]">
+              <div className="flex items-center justify-between">
+                <label className=" text-lg pt-2">Ts-Cost:</label>
+              </div>
+              <div className="mt-2">
+                <input
+                  type="number"
+                  value={cost}
+                  className="w-[195px] h-[30px] p-2 rounded"
+                  onChange={(e) => setCost(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div>
+              <button
+                className="ml-[105px] h-[30px] w-[90px] rounded bg-primary"
+                onClick={handleSendData}
+              >
+                Save
+              </button>
+            </div>
+            <div>
+              <div className="flex items-center pt-2  justify-between"></div>
+              <div className="mt-2">
+                <div className="h-[50px] p-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <TsCostTab />
       </div>
-      <TsCostTab />
     </div>
   );
 };
@@ -125,7 +168,6 @@ const TsCostTab = () => {
   };
   return (
     <div>
-      <h2>Ts-Cost Data Table</h2>
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>

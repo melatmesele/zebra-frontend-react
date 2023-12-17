@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const CardContent = ({ text }) => {
   return (
     <div className=" text-md my-8 ml-5 ">
-      {text === "TEXTILE" ? (
+      {text === "TOTAL" ? (
         <p>this table shows bergamo </p>
       ) : text === "SOLD" ? (
         <p> this tables shows sold cherks</p>

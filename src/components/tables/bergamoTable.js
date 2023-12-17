@@ -34,6 +34,12 @@ const BergamoDataTable = () => {
     const day = date.getDate().toString().padStart(2, "0");
     return `${year}-${month}-${day}`;
   };
+  const minDate = new Date(
+    Math.min(...bergamoData.map((item) => new Date(item.date)))
+  );
+  const maxDate = new Date(
+    Math.max(...bergamoData.map((item) => new Date(item.date)))
+  );
 
   // Update the handleSendData function to use the formatted date
   const handleSendData = async () => {
@@ -73,37 +79,69 @@ const BergamoDataTable = () => {
   };
 
   return (
-    <div className="bg-white">
-      <BergamoTab />
+    <div className="bg-white w-full md:w-[800px] mx-auto mt-10 md:ml-[310px] md:mt-[56px] border-4 border-primary">
+      <div className="text-2xl ml-4 md:ml-[30px]">Total Data Table</div>
       <div className="flex">
-        <DatePicker
-          selected={selectedDate}
-          label="Select Date"
-          onChange={(date) => setSelectedDate(date)}
-          className="border p-2 rounded w-[150px]"
-          dateFormat="yyyy/MM/dd"
-        />
+        <div className="">
+          <div
+            className="space-y-3 flex flex-col  max-w-md mx-auto p-8 h-400 w-full bg-white "
+            action="#"
+            method="POST"
+          >
+            <div className="mt-[3px] ">
+              <div className="flex items-center justify-between">
+                <label className=" text-lg pt-2">Select Date</label>
+              </div>
+              <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                className="border-color-rgb(203 213 225) mt-2 rounded w-[195px] h-[30px] "
+                dateFormat="yyyy/MM/dd"
+                minDate={minDate}
+                maxDate={maxDate}
+              />
+            </div>
 
-        <input
-          label="Sold"
-          type="number"
-          value={sold}
-          className="w-[120px]"
-          onChange={(e) => setSold(e.target.value)}
-        />
+            <div className="mt-[9px]">
+              <div className="flex items-center justify-between">
+                <label className=" text-lg pt-2">Sold:</label>
+              </div>
+              <div className="mt-2">
+                <input
+                  type="number"
+                  value={sold}
+                  className="w-[195px] h-[30px] p-2 rounded"
+                  onChange={(e) => setSold(e.target.value)}
+                />
+              </div>
+            </div>
 
-        <input
-          label="Bergamo"
-          type="number"
-          value={bergamod}
-          onChange={(e) => setBergamod(e.target.value)}
-        />
-        <button
-          className="w-[80px] h-[20px] bg-primary"
-          onClick={handleSendData}
-        >
-          Save
-        </button>
+            <div>
+              <div className="flex items-center justify-between">
+                <label className="text-lg pt-2">Bergamo:</label>
+              </div>
+              <div className="mt-2">
+                <input
+                  type="number"
+                  value={bergamod}
+                  className="w-[195px] h-[30px] p-2 rounded"
+                  onChange={(e) => setBergamod(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div>
+              <button
+                className="ml-[105px] h-[30px] w-[90px] rounded bg-primary"
+                onClick={handleSendData}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <BergamoTab />
       </div>
     </div>
   );
@@ -144,11 +182,10 @@ const BergamoTab = () => {
   };
   return (
     <div>
-      <h2>Bergamo Data Table</h2>
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
           <tr>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" class="px-10 py-3">
               Date
             </th>
             <th scope="col" class="px-6 py-3">
@@ -176,7 +213,7 @@ const BergamoTab = () => {
                 <td>{item.sold}</td>
                 <td>{item.cherk}</td>
                 <td>{item.bergamod}</td>
-                <td>{item.sold - item.cherk - item.bergamod}</td>
+                <td>{(item.sold - item.cherk - item.bergamod).toFixed(2)}</td>
               </tr>
             ))
           ) : (

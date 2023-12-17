@@ -1,13 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { store } from "./store/store";
+import { Provider } from "react-redux";
+import TiltedEllipse from "./components/HomePage/ellipse";
+import Logo from "./components/HomePage/logo";
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <div className="overflow-x-hidden overflow-y-hidden">
+        <div className="flex flex-row space-x-4 mt-4">
+          <a className="w-1/5 mr-2">
+            <Logo />
+          </a>
+          <TiltedEllipse />
+        </div>
+        <App />
+      </div>
+    </Provider>
   </React.StrictMode>
 );
 

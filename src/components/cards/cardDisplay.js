@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Card from "./backGround";
 import FoamDataTable from "../tables/foamTable";
-import CherkDataTable from "../cherkTable";
-import MyCostDataTable from "../myCostTable";
-import TsCostDataTable from "../tsCostTable";
+import CherkDataTable from "../tables/cherkTable";
+import MyCostDataTable from "../tables/myCostTable";
+import TsCostDataTable from "../tables/tsCostTable";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedData } from "../../store/selectedCard";
-import TableDisplay from "../cardDisplay/tableDisplay";
-import BergamoDataTable from "../bergamoTable";
+import TableDisplay from "./tableDisplay";
+import BergamoDataTable from "../tables/bergamoTable";
 import { useNavigate } from "react-router-dom";
 const CardApp = () => {
   const [selectedCard, setSelectedCard] = useState(null);
@@ -18,25 +18,10 @@ const CardApp = () => {
 
   const handleCardClick = (card) => {
     dispatch(setSelectedData(card));
-    navigate(`/dataTable/${card}`);
+    navigate(`/${card}`);
   };
 
-  // const renderSelectedTable = () => {
-  //   switch (selectedCard) {
-  //     case "FOAM":
-  //       return <FoamDataTable />;
-
-  //     case "SOLD":
-  //       return <CherkDataTable />;
-  //     case "MY-COST":
-  //       return <MyCostDataTable />;
-  //     case "TS-COST":
-  //       return <TsCostDataTable />;
-  //     default:
-  //       return <BergamoDataTable />;
-  //   }
-  // };
-  const cardContents = ["FOAM", "TEXTILE", "SOLD", "MY-COST", "TS-COST"];
+  const cardContents = ["FOAM", "TOTAL", "SOLD", "MY-COST", "TS-COST"];
   return (
     <div>
       <div className="flex flex-col items-center -mt-[65px] justify-center h-screen ">

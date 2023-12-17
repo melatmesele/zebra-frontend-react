@@ -8,23 +8,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useSelector, useDispatch } from "react-redux";
 import { setSpent } from "../../store/cost";
 const MyCostDataTable = () => {
-  // const [myCostData, setMyCostData] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [cost, setCost] = useState(0);
   const myCostData = useSelector((state) => state.spent.spent);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  // const fetchMyCostData = async () => {
-  //   try {
-  //     const data = await getMyCostData();
-  //     // dispatch(setSpent(data));
-  //     return data
-  //   } catch (error) {
-  //     console.error("Error fetching foam data:", error);
-  //   }
-  // };
-  // dispatch(setSpent(fetchMyCostData));
+ 
   useEffect(() => {
     const fetchMyCostData = async () => {
       try {
@@ -38,24 +27,12 @@ const MyCostDataTable = () => {
     fetchMyCostData(); // Call the asynchronous action inside useEffect
   }, [dispatch]);
 
-  //   useEffect(() => {
-  //   fetchMyCostData();
-  // }, []);
-
-  // const fetchMyCostData = async () => {
-  //   try {
-  //     const data = await getMyCostData();
-  //     dispatch(setSpent(data));
-  //   } catch (error) {
-  //     console.error("Error fetching foam data:", error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchMyCostData();
-  // }, [fetch]);
-  // Function to format the date as "yyyy/mm/dd"
-  // Function to format the date as "year/month/date"
+  const minDate = new Date(
+    Math.min(...myCostData.map((item) => new Date(item.date)))
+  );
+  const maxDate = new Date(
+    Math.max(...myCostData.map((item) => new Date(item.date)))
+  );
   const formatSelectedDate = (date) => {
     const year = date.getFullYear();
     const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Adding 1 because getMonth() returns 0-based month
@@ -104,25 +81,61 @@ const MyCostDataTable = () => {
   };
 
   return (
-    <div className="bg-white">
-      <div className="flex">
-        <label>Select Date:</label>
-        <DatePicker
-          selected={selectedDate}
-          onChange={(date) => setSelectedDate(date)}
-          className="border p-2 rounded"
-          dateFormat="yyyy/MM/dd"
-        />
-        <label>My-cost:</label>
-        <input
-          type="number"
-          value={cost}
-          onChange={(e) => setCost(e.target.value)}
-        />
+    <div className="bg-white w-full md:w-[719px] mx-auto mt-10 md:ml-[310px] md:mt-[56px] border-4 border-primary">
+      <div className="text-2xl ml-4 md:ml-[30px]">My-Cost Data Table</div>
+      <div className="flex space-x-5">
+        <div className="">
+          <div
+            className="space-y-3 flex flex-col  max-w-md mx-auto p-8 h-400 w-full bg-white "
+            action="#"
+            method="POST"
+          >
+            <div className="mt-[3px] ">
+              <div className="flex items-center justify-between">
+                <label className=" text-lg pt-2">Select Date</label>
+              </div>
+              <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                className="border-color-rgb(203 213 225) mt-2 rounded w-[195px] h-[30px] "
+                dateFormat="yyyy/MM/dd"
+                minDate={minDate}
+                maxDate={maxDate}
+              />
+            </div>
 
-        <button onClick={handleSendData}>Send Data to Backend</button>
+            <div className="mt-[9px]">
+              <div className="flex items-center justify-between">
+                <label className=" text-lg pt-2">My-Cost:</label>
+              </div>
+              <div className="mt-2">
+                <input
+                  type="number"
+                  value={cost}
+                  className="w-[195px] h-[30px] p-2 rounded"
+                  onChange={(e) => setCost(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div>
+              <button
+                className="ml-[105px] h-[30px] w-[90px] rounded bg-primary"
+                onClick={handleSendData}
+              >
+                Save
+              </button>
+            </div>
+            <div>
+              <div className="flex items-center pt-2  justify-between"></div>
+              <div className="mt-2">
+                <div className="h-[50px] p-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <MyCostTab />
       </div>
-      <MyCostTab />
     </div>
   );
 };
@@ -131,16 +144,7 @@ const MyCostTab = () => {
   const myCostData = useSelector((state) => state.spent.spent);
   const dispatch = useDispatch();
   console.log("Type of myCostData:", typeof myCostData);
-  // const fetchMyCostData = async () => {
-  //   try {
-  //     const data = await getMyCostData();
-  //     // dispatch(setSpent(data));
-  //     return data;
-  //   } catch (error) {
-  //     console.error("Error fetching foam data:", error);
-  //   }
-  // };
-  // dispatch(setSpent(fetchMyCostData));
+  
   useEffect(() => {
     const fetchMyCostData = async () => {
       try {
@@ -156,10 +160,6 @@ const MyCostTab = () => {
   const calculateSum = () => {
     let grandTotal = 0;
 
-    // myCostData.forEach((item) => {
-
-    //   grandTotal += parseInt(item.spent);
-    // });
 
     if (Array.isArray(myCostData)) {
       myCostData.forEach((item) => {
@@ -171,11 +171,10 @@ const MyCostTab = () => {
   };
   return (
     <div>
-      <h2>My-Cost Data Table</h2>
-      <table className="w-full text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+            <th scope="col" class="px-10 py-3">
               Date
             </th>
             <th scope="col" class="px-6 py-3">
@@ -186,11 +185,12 @@ const MyCostTab = () => {
         <tbody>
           {Array.isArray(myCostData) ? (
             myCostData.map((item) => (
-              <tr key={item.id}>
-                <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                  {item.date}
-                </td>
-                <td className="px-6 py-4">{item.spent}</td>
+              <tr
+                key={item.id}
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <td>{item.date}</td>
+                <td>{item.spent}</td>
               </tr>
             ))
           ) : (

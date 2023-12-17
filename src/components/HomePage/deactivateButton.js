@@ -1,29 +1,37 @@
 import React, { useState, useEffect } from "react";
 import {
   addDeactivateSprintData,
-  getFoamData,
+  getCherkData,
 } from "../../api-helper-function/apiCallerFunction";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsSprintActive } from "../../store/sprintSlice";
-
+import { setSprintId } from "../../store/sprintSlice";
 const DeactivateButton = () => {
-  // console.log(startDate)
-  //   const [deactivatemyCostData, setDeactivateData] = useState([]);
   const sprint_id = useSelector((state) => state.sprint.sprintId);
-  const dispatch = useDispatch();
-  const handleDeactiveSprint = async () => {
-    // const formattedDate = formatSelectedDate(startDate);
+  const isSprintActive = useSelector((state) => state.sprint.isSprintActive);
+  const userId = useSelector((state) => state.userId.userId);
 
-    // const sprint_id = foamData.find(
-    //   (item) => item.date === formattedDate
-    // )?.sprint_id;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const fetchCherkData = async () => {
+      try {
+        const data = await getCherkData();
+        dispatch(setSprintId(data[0].sprint_id));
+      } catch (error) {
+        console.error("Error fetching cost data:", error);
+      }
+    };
+
+    fetchCherkData(); // Call the asynchronous action inside useEffect
+  }, [dispatch]);
+  const handleDeactiveSprint = async () => {
 
     if (sprint_id) {
       try {
         const response = await addDeactivateSprintData(sprint_id);
-        if (response) {
-          dispatch(setIsSprintActive(response.is_active));
-        }
+
+        dispatch(setIsSprintActive(false));
+
       } catch (error) {
         console.error("Error sending data to the backend:", error);
       }

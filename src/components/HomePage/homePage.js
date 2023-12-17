@@ -1,25 +1,18 @@
 import React from "react";
 import NavBar from "./navBar.js";
 import CardApp from "../cards/cardDisplay.js";
-import StartDatePicker from "../picker.js";
-import TiltedEllipse from "./ellipse.js";
-import BottomEllipse from "./bottomEllipse.js";
-import Logo from './logo'
+import StartDatePicker from "./picker.js";
+import ExpenseTab from "../tables/expenseTable.js";
+import PersonalExpenseTab from "../tables/personalExpenseTable.js";
 const HomePage = () => {
   return (
-    <div className=" fixed ">
+    <div className="md:fixed">
+      <CardApp />
+      <StartDatePicker />
 
-        <TiltedEllipse />
-      
-       
-           <Logo />
-          
-
-          <CardApp />
-        
-        <BottomEllipse />
-      </div>
-
+      <ExpenseTab />
+      <PersonalExpenseTab />
+    </div>
   );
 };
 

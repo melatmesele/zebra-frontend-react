@@ -1,34 +1,23 @@
 // App.js
-import React from 'react';
-import { BrowserRouter as Router, Routes , Route } from 'react-router-dom';
-
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Import your components for the routes
 import RegistrationForm from "./components/auth/registration";
 import UserLogin from "./components/auth/login";
 import CardApp from "./components/cards/cardDisplay";
-// import Table from "./components/tables/foamTable";
-// import New from "./components/log";
-// import Card from "./components/card";
-import LogoutButton from "./components/logOut";
 import HomePage from "./components/HomePage/homePage";
-// import MyTable from "./components/new";
-// import StartDatePicker from "./components/picker"
 import TableComponent from "./components/tab";
 import FoamDataTable from "./components/tables/foamTable";
 import Report from "./components/report";
 import SideBar from "./components/sideBar";
 import Card from "./components/cards/backGround";
-import TiltedEllipse from "./components/HomePage/ellipse";
-import TableDisplay from "./components/cardDisplay/tableDisplay";
-import { RenderSelectedTable } from "./components/cards/cardDisplay";
-
+import TableDisplay from "./components/cards/tableDisplay";
+import LogoutButton from "./components/logOut";
 function App() {
   return (
-    
-      <Router>
-        <Routes>
-        
+    <Router>
+      <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/rotate" element={<Card />} />
         <Route exact path="/register" element={<RegistrationForm />} />
@@ -39,14 +28,11 @@ function App() {
         <Route exact path="/logout" element={<LogoutButton />} />
         <Route exact path="/report" element={<Report />} />
         <Route exact path="/sidebar" element={<SideBar />} />
-        <Route exact path="/tableDisplay" element={<TableDisplay />} />
-        <Route path="/dataTable/:selectedCard" element={<TableDisplay />} />
-      
-      
-        </Routes>
-        
-      </Router>
-   
+        <Route exact path="/:selectedCard" element={<TableDisplay />} />
+
+        <Route exact path="/logOut" element={<LogoutButton />} />
+      </Routes>
+    </Router>
   );
 }
 

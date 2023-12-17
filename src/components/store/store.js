@@ -1,18 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
-import sprintReducer from './sprintSlice'
-import spentReducer from './cost'
-import tsCostReducer from "./tsCostSlice"
-import foamDataReducer from './foamSlice'
-import cherkDataReducer from './cherkSlice'
-import bergamoDataReducer from './bergamo'
-import reportDataReducer from './report'
-import foamReportReducer from './report'
+import sprintReducer from "./sprintSlice";
+import spentReducer from "./cost";
+import tsCostReducer from "./tsCostSlice";
+import foamDataReducer from "./foamSlice";
+import cherkDataReducer from "./cherkSlice";
+import bergamoDataReducer from "./bergamo";
+import reportDataReducer from "./report";
+import foamReportReducer from "./report";
 import cherksReportReducer from "./report";
 import totalsReportReducer from "./report";
 import myCostsReportReducer from "./report";
 import tsCostsReportReducer from "./report";
-import selectedDataReducer from './selectedCard'
-
+import selectedDataReducer from "./selectedCard";
+import expenseReducer from "./expense";
+import personalExpenseReducer from "./personalExpense";
+import userIdReducer from "./userId";
 export const store = configureStore({
   reducer: {
     sprint: sprintReducer,
@@ -24,12 +26,12 @@ export const store = configureStore({
     reportData: reportDataReducer,
     foamReport: foamReportReducer,
     cherksReport: cherksReportReducer,
-    totalsReport : totalsReportReducer,
-    myCostsReport : myCostsReportReducer, 
-    tsCostsReport : tsCostsReportReducer,
-    selectedData : selectedDataReducer,
-
+    totalsReport: totalsReportReducer,
+    myCostsReport: myCostsReportReducer,
+    tsCostsReport: tsCostsReportReducer,
+    selectedData: selectedDataReducer,
+    expenseData: expenseReducer,
+    personalExpense: personalExpenseReducer,
+    userId: userIdReducer,
   },
 });
-
-

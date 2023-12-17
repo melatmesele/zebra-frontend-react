@@ -15,23 +15,6 @@ const CherkDataTable = () => {
   const cherkData = useSelector((state) => state.cherkData.cherkData);
   const dispatch = useDispatch();
 
-  // useDispatch()
-
-  // useEffect(() => {
-  //   const fetchCherkData = async () => {
-  //     try {
-  //       const data = await getCherkData();
-  //       setCherkData(data);
-  //     } catch (error) {
-  //       console.error("Error fetching foam data:", error);
-  //     }
-  //   };
-
-  //   fetchCherkData();
-  // }, []);
-
-  // Function to format the date as "yyyy/mm/dd"
-  // Function to format the date as "year/month/date"
 
   useEffect(() => {
     const fetchCherkData = async () => {
@@ -45,6 +28,13 @@ const CherkDataTable = () => {
 
     fetchCherkData(); // Call the asynchronous action inside useEffect
   }, [dispatch]);
+
+  const minDate = new Date(
+    Math.min(...cherkData.map((item) => new Date(item.date)))
+  );
+  const maxDate = new Date(
+    Math.max(...cherkData.map((item) => new Date(item.date)))
+  );
 
   const formatSelectedDate = (date) => {
     const year = date.getFullYear();
@@ -63,28 +53,7 @@ const CherkDataTable = () => {
       const selectedId = cherkData.find(
         (item) => item.date === formattedDate
       )?.id;
-      // console.log(formattedDate);
-
-      // if (selectedId) {
-      //   try {
-      //     // const response = await addCherkData(selectedId, sold, profit);
-      //     dispatch(addFoamDataAsync( selectedId ,sold, profit));
-      //     // Update the foamData state with the modified data
-      //     const updatedCherkData = cherkData.map((item) =>
-      //       item.id === selectedId
-      //         ? {
-      //             ...item,
-      //             sold: selectSelectedSold,
-      //             percentage: selectSelectedPercentage,
-      //           }
-      //         : item
-      //     );
-      //     setCherkData(updatedCherkData);
-      //     console.log(cherkData);
-      //   } catch (error) {
-      //     console.error("Error sending data to the backend:", error);
-      //   }
-      // }
+      
       if (selectedId) {
         try {
           const response = await addCherkData(selectedId, sold, profit);
@@ -112,31 +81,69 @@ const CherkDataTable = () => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white w-full md:w-[719px] mx-auto mt-10 md:ml-[310px] md:mt-[56px] border-4 border-primary">
+      <div className="text-2xl ml-4 md:ml-[30px]">Cherk Data Table</div>
       <div className="flex">
-        <label>Select Date:</label>
-        <DatePicker
-          selected={selectedDate}
-          onChange={(date) => setSelectedDate(date)}
-          className="border p-2 rounded"
-          dateFormat="yyyy/MM/dd"
-        />
-        <label>percentage:</label>
-        <input
-          type="number"
-          value={profit}
-          onChange={(e) => setProfit(e.target.value)}
-        />
+        <div className="">
+          <div
+            className="space-y-3 flex flex-col  max-w-md mx-auto p-8 h-400 w-full bg-white "
+            action="#"
+            method="POST"
+          >
+            <div className="mt-[3px] ">
+              <div className="flex items-center justify-between">
+                <label className=" text-lg pt-2">Select Date</label>
+              </div>
+              <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                className="border-color-rgb(203 213 225) mt-2 rounded w-[195px] h-[30px] "
+                dateFormat="yyyy/MM/dd"
+                minDate={minDate}
+                maxDate={maxDate}
+              />
+            </div>
 
-        <label>Cherk:</label>
-        <input
-          type="number"
-          value={sold}
-          onChange={(e) => setSold(e.target.value)}
-        />
-        <button onClick={handleSendData}>Send Data to Backend</button>
+            <div className="mt-[9px]">
+              <div className="flex items-center justify-between">
+                <label className=" text-lg pt-2">Percentage:</label>
+              </div>
+              <div className="mt-2">
+                <input
+                  type="number"
+                  value={profit}
+                  className="w-[195px] h-[30px] p-2 rounded"
+                  onChange={(e) => setProfit(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div>
+              <div className="flex items-center justify-between">
+                <label className="text-lg pt-2">Cherk:</label>
+              </div>
+              <div className="mt-2">
+                <input
+                  type="number"
+                  value={sold}
+                  className="w-[195px] h-[30px] p-2 rounded"
+                  onChange={(e) => setSold(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div>
+              <button
+                className="ml-[105px] h-[30px] w-[90px] rounded bg-primary"
+                onClick={handleSendData}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+        <CherkTab />
       </div>
-      <CherkTab />
     </div>
   );
 };
@@ -181,11 +188,10 @@ const CherkTab = () => {
   };
   return (
     <div>
-      <h2>Cherk Data Table</h2>
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" class="px-10 py-3">
               Date
             </th>
             <th scope="col" class="px-6 py-3">
@@ -208,8 +214,8 @@ const CherkTab = () => {
               >
                 <td>{item.date}</td>
                 <td>{item.sold}</td>
-                <td>{item.percentage}</td>
-                <td>{item.sold - item.percentage}</td>
+                <td>{item.percentage.toFixed(2)}</td>
+                <td>{(item.sold - item.percentage).toFixed(2)}</td>
               </tr>
             ))
           ) : (

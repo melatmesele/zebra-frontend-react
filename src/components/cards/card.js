@@ -10,19 +10,19 @@ const Card = ({ text }) => {
   const [showPopup, setShowPopup] = useState(false);
 
   return (
-    <div className="card-container  h-80 rounded overflow-hidden m-5 w-80 cursor-pointer card relative">
-      <div className="relative h-full">
+    <div className="card-container  w-[800px] h-80 rounded overflow-hidden m-5 w-80 cursor-pointer card relative">
+      <div className="relative ">
         <img
           src={
-            text === "TEXTILE"
-              ? textile
+            text === "FOAM"
+              ? foam
               : text === "SOLD"
               ? sold
               : text === "TS-COST"
               ? tsCost
               : text === "MY-COST"
               ? myCost
-              : foam
+              : textile
           }
           alt="Avatar"
           className="h-full w-full object-cover rounded-medium "
