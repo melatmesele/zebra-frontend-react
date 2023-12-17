@@ -10,7 +10,7 @@ import {
   setSnetData,
   setTotNetData,
   setInitialDebtData,
-} from "../../store/expense";
+} from "../store/expense";
 import {setMinDate, setMaxDate } from '../store/sprintSlice'
 
 const ExpenseTab = () => {
