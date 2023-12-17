@@ -53,7 +53,13 @@ const CherkDataTable = () => {
       const selectedId = cherkData.find(
         (item) => item.date === formattedDate
       )?.id;
-      
+      if (profit <= 100) {
+        setError(""); // Clear the error message if the value is valid
+      }
+      if (profit > 100) {
+        setError("Percentage value should not be greater than 100");
+      } 
+      else{
       if (selectedId) {
         try {
           const response = await addCherkData(selectedId, sold, profit);
@@ -74,7 +80,7 @@ const CherkDataTable = () => {
         }
       } else {
         console.error("No id found for the selected date");
-      }
+      }}
     } else {
       console.error("Please select a date before sending data to the backend");
     }

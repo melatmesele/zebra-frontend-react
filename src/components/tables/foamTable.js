@@ -50,7 +50,15 @@ const FoamDataTable = () => {
       const selectedId = foamData.find(
         (item) => item.date === formattedDate
       )?.id;
-      // console.log(formattedDate);
+      if (profit <= 100) {
+        setError("");
+      }
+      if (profit > 100) {
+        
+          setError("Percentage value should not be greater than 100");
+        
+      }
+      else{
       if (selectedId) {
         try {
           const response = await addFoamData(selectedId, sold, profit);
@@ -74,7 +82,7 @@ const FoamDataTable = () => {
         }
       } else {
         console.error("No id found for the selected date");
-      }
+      }}
     } else {
       console.error("Please select a date before sending data to the backend");
     }
