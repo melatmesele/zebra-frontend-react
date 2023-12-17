@@ -5,7 +5,7 @@ import CherkDataTable from "../tables/cherkTable";
 import MyCostDataTable from "../tables/myCostTable";
 import TsCostDataTable from "../tables/tsCostTable";
 import { useSelector, useDispatch } from "react-redux";
-import { setSelectedData } from "../../store/selectedCard";
+import { setSelectedData } from "../store/selectedCard";
 import TableDisplay from "./tableDisplay";
 import BergamoDataTable from "../tables/bergamoTable";
 import { useNavigate } from "react-router-dom";

@@ -5,7 +5,7 @@ import {
   setSprintId,
   setIsSprintActive,
   setStartDate,
-} from "../../store/sprintSlice";
+} from "../store/sprintSlice";
 
 import Cookies from "js-cookie";
 import dayjs from "dayjs";
@@ -18,7 +18,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useState, useEffect } from "react";
-import { setUserId } from "../../store/userId";
+import { setUserId } from "../store/userId";
 const StartDatePicker = () => {
   const isSprintActive = useSelector((state) => state.sprint.isSprintActive);
   const startDate = useSelector((state) => state.sprint.startDate);

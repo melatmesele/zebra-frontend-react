@@ -5,7 +5,7 @@ import {
 } from "../../api-helper-function/apiCallerFunction";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setTsCostSpent } from "../../store/tsCostSlice";
+import { setTsCostSpent } from "../store/tsCostSlice";
 const TsCostReportTable = () => {
   const tsCostData = useSelector((state) => state.reportData.tsCostsReport);
   const dispatch = useDispatch();

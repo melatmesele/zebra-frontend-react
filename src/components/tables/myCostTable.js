@@ -6,7 +6,7 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useSelector, useDispatch } from "react-redux";
-import { setSpent } from "../../store/cost";
+import { setSpent } from "../store/cost";
 const MyCostDataTable = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [cost, setCost] = useState(0);

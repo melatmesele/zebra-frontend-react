@@ -5,7 +5,7 @@ import {
 } from "../../api-helper-function/apiCallerFunction";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setCherkData } from "../../store/cherkSlice";
+import { setCherkData } from "../store/cherkSlice";
 const CherkReportTable = () => {
   const cherkData = useSelector((state) => state.reportData.cherksReport);
   const dispatch = useDispatch();

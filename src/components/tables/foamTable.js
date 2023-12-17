@@ -6,7 +6,7 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useSelector, useDispatch } from "react-redux";
-import { setFoamData } from "../../store/foamSlice";
+import { setFoamData } from "../store/foamSlice";
 
 const FoamDataTable = () => {
   const [selectedDate, setSelectedDate] = useState(null);

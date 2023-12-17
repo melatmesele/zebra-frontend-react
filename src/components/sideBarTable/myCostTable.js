@@ -5,7 +5,7 @@ import {
 } from "../../api-helper-function/apiCallerFunction";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setSpent } from "../../store/cost";
+import { setSpent } from "../store/cost";
 const MyCostReportTable = () => {
   // const [myCostData, setMyCostData] = useState([]);
   const myCostData = useSelector((state) => state.reportData.myCostsReport);

@@ -11,7 +11,7 @@ import {
   setTotNetData,
   setInitialDebtData,
 } from "../../store/expense";
-import {setMinDate, setMaxDate } from '../../store/sprintSlice'
+import {setMinDate, setMaxDate } from '../store/sprintSlice'
 
 const ExpenseTab = () => {
   const bnetData = useSelector((state) => state.expenseData.bnetData);

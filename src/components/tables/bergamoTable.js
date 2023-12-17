@@ -6,7 +6,7 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useSelector, useDispatch } from "react-redux";
-import { setBergamoData } from "../../store/bergamo";
+import { setBergamoData } from "../store/bergamo";
 const BergamoDataTable = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [bergamod, setBergamod] = useState(0);

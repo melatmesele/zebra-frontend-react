@@ -4,8 +4,8 @@ import {
   getCherkData,
 } from "../../api-helper-function/apiCallerFunction";
 import { useSelector, useDispatch } from "react-redux";
-import { setIsSprintActive } from "../../store/sprintSlice";
-import { setSprintId } from "../../store/sprintSlice";
+import { setIsSprintActive } from "../store/sprintSlice";
+import { setSprintId } from "../store/sprintSlice";
 const DeactivateButton = () => {
   const sprint_id = useSelector((state) => state.sprint.sprintId);
   const isSprintActive = useSelector((state) => state.sprint.isSprintActive);

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { store } from "./store/store";
+import { store } from "./components/store/store";
 import { Provider } from "react-redux";
 import TiltedEllipse from "./components/HomePage/ellipse";
 import Logo from "./components/HomePage/logo";

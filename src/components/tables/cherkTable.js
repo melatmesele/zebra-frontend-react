@@ -6,7 +6,7 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useSelector, useDispatch } from "react-redux";
-import { setCherkData } from "../../store/cherkSlice";
+import { setCherkData } from "../store/cherkSlice";
 
 const CherkDataTable = () => {
   const [selectedDate, setSelectedDate] = useState(null);

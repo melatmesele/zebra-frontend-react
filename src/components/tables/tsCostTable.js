@@ -6,7 +6,7 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useSelector, useDispatch } from "react-redux";
-import { setTsCostSpent } from "../../store/tsCostSlice";
+import { setTsCostSpent } from "../store/tsCostSlice";
 const TsCostDataTable = () => {
   // const [tsCostData, setTsCostData] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);

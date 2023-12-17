@@ -10,8 +10,8 @@ import {
   setMyProfitExpense,
   setNetProfitExpense,
 
-} from "../../store/personalExpense";
-import { setMinDate, setMaxDate } from "../../store/sprintSlice";
+} from "../store/personalExpense";
+import { setMinDate, setMaxDate } from "../store/sprintSlice";
 
 const PersonalExpenseTab = () => {
   const Mycost = useSelector((state) => state.personalExpense.Mycost);

@@ -5,7 +5,7 @@ import {
 } from "../../api-helper-function/apiCallerFunction";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setBergamoData } from "../../store/bergamo";
+import { setBergamoData } from "../store/bergamo";
 const BergamoReportTab = () => {
   const bergamoData = useSelector((state) => state.reportData.totalsReport);
   const dispatch = useDispatch();
