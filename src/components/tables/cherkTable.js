@@ -14,7 +14,8 @@ const CherkDataTable = () => {
   const [sold, setSold] = useState(0);
   const cherkData = useSelector((state) => state.cherkData.cherkData);
   const dispatch = useDispatch();
-
+  const [error, setError] = useState(null);
+  
 
   useEffect(() => {
     const fetchCherkData = async () => {
@@ -121,6 +122,7 @@ const CherkDataTable = () => {
                   className="w-[195px] h-[30px] p-2 rounded"
                   onChange={(e) => setProfit(e.target.value)}
                 />
+                {error && <p className="text-red-500 text-sm">{error}</p>}
               </div>
             </div>
 
