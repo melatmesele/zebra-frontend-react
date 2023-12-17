@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import {
   getExpenseData,
-  getReportData,
 } from "../../api-helper-function/apiCallerFunction";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -11,51 +10,15 @@ import {
   setTotNetData,
   setInitialDebtData,
 } from "../store/expense";
-import {setMinDate, setMaxDate } from '../store/sprintSlice'
 
 const ExpenseTab = () => {
   const bnetData = useSelector((state) => state.expenseData.bnetData);
   const snetData = useSelector((state) => state.expenseData.snetData);
-
   const totNetData = useSelector((state) => state.expenseData.totNetData);
   const initialDebt = useSelector((state) => state.expenseData.initialDebt);
-  const startDate = useSelector((state) => state.sprint.startDate);
   const minDate = useSelector((state) => state.sprint.minDate);
-
-  const maxDate = useSelector((state) => state.sprint.maxDate);
-
-  const sprint_id = useSelector((state) => state.sprint.sprintId);
   const dispatch = useDispatch();
-  useEffect(() => {
-    const fetchDataForSelectedSprint = async () => {
-     
-
-      try {
-        const reportData = await getReportData(sprint_id);
-      
-        dispatch(
-          setMinDate(
-           
-            reportData.foams.date)
-         
-          
-        );
-        dispatch(
-          setMaxDate(
-            new Date(
-              Math.min(reportData.map((item) => new Date(item.foams.date)))
-            )
-          )
-        );
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchDataForSelectedSprint();
-  }, [dispatch, sprint_id]);
-
-
+ 
 
   useEffect(() => {
     const fetchExpenseData = async () => {

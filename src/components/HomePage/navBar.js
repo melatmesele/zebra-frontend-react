@@ -7,7 +7,7 @@ const NavBar = () => {
       <div className="flex justify-end mr-8 md:mr-[69px] items-center">
         <ul className="flex space-x-4 justify-end sm:space-x-8 text-md sm:text-2xl ">
           <div className="border-primary border-b-2">
-            <a href="/">Home</a>
+            <a href="/homePage">Home</a>
           </div>
 
           <li>
