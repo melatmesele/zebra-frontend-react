@@ -3,7 +3,9 @@ const initialState = {
   bnetData: 0,
   snetData: 0,
   totNetData: 0,
-  initialDebt:0
+  initialDebt: 0,
+  startDate: "",
+  endDate: "",
 };
 
 export const expenseSlice = createSlice({
@@ -22,9 +24,21 @@ export const expenseSlice = createSlice({
     setInitialDebtData: (state, action) => {
       state.initialDebt = action.payload;
     },
+    setStartDateExpense: (state, action) => {
+      state.startDate = action.payload;
+    },
+    setEndDateExpense: (state, action) => {
+      state.endDate = action.payload;
+    },
   },
 });
 
-export const { setBnetData, setSnetData, setTotNetData, setInitialDebtData } =
-  expenseSlice.actions;
+export const {
+  setBnetData,
+  setSnetData,
+  setTotNetData,
+  setInitialDebtData,
+  setStartDateExpense,
+  setEndDateExpense,
+} = expenseSlice.actions;
 export default expenseSlice.reducer;

@@ -9,18 +9,20 @@ import {
   setMyCostExpense,
   setMyProfitExpense,
   setNetProfitExpense,
-
+  setStartDateExpense,
+  setEndDateExpense,
 } from "../store/personalExpense";
-import { setMinDate, setMaxDate } from "../store/sprintSlice";
 
 const PersonalExpenseTab = () => {
   const Mycost = useSelector((state) => state.personalExpense.Mycost);
   const MyProfit = useSelector((state) => state.personalExpense.MyProfit);
 
   const NetProfit = useSelector((state) => state.personalExpense.NetProfit);
+  const startDate = useSelector((state) => state.personalExpense.startDate);
+  const endDate = useSelector(
+    (state) => state.personalExpense.endDate
+  );
 
-
-  const sprint_id = useSelector((state) => state.sprint.sprintId);
   const dispatch = useDispatch();
 
 
@@ -31,7 +33,8 @@ const PersonalExpenseTab = () => {
         dispatch(setMyCostExpense(data.PersonalProfit.Mycost));
         dispatch(setMyProfitExpense(data.PersonalProfit.MyProfit));
         dispatch(setNetProfitExpense(data.PersonalProfit.NetProfit));
-
+        dispatch(setStartDateExpense(data.PersonalProfit.startDate));
+        dispatch(setEndDateExpense(data.PersonalProfit.endDate));
      
       } catch (error) {
         console.error("Error fetching cost data:", error);
@@ -62,9 +65,7 @@ const PersonalExpenseTab = () => {
         </thead>
         <tbody>
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td>{}</td>
-
-            <td>{MyProfit}</td>
+            <td>{`${startDate}-${endDate}`}</td>
             <td>{MyProfit}</td>
             <td>{Mycost}</td>
             <td>{NetProfit}</td>

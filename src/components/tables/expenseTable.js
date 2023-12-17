@@ -9,6 +9,8 @@ import {
   setSnetData,
   setTotNetData,
   setInitialDebtData,
+  setStartDateExpense,
+  setEndDateExpense,
 } from "../store/expense";
 
 const ExpenseTab = () => {
@@ -16,7 +18,8 @@ const ExpenseTab = () => {
   const snetData = useSelector((state) => state.expenseData.snetData);
   const totNetData = useSelector((state) => state.expenseData.totNetData);
   const initialDebt = useSelector((state) => state.expenseData.initialDebt);
-  const minDate = useSelector((state) => state.sprint.minDate);
+  const startDate = useSelector((state) => state.expenseData.startDate);
+  const endDate = useSelector((state) => state.expenseData.endDate);
   const dispatch = useDispatch();
  
 
@@ -27,8 +30,10 @@ const ExpenseTab = () => {
         dispatch(setBnetData(data.net.Bnet));
         dispatch(setSnetData(data.net.Snet));
         dispatch(setInitialDebtData(data.net.initialDebt));
-
         dispatch(setTotNetData(data.net.TotNet));
+        dispatch(setStartDateExpense(data.net.startDate));
+        dispatch(setEndDateExpense(data.net.endDate));
+     
       } catch (error) {
         console.error("Error fetching cost data:", error);
       }
@@ -61,7 +66,7 @@ const ExpenseTab = () => {
         </thead>
         <tbody>
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td>{minDate}</td>
+            <td>{`${startDate}-${endDate}`}</td>
 
             <td>{bnetData}</td>
             <td>{initialDebt}</td>
