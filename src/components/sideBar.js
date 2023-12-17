@@ -13,7 +13,7 @@ import {
   setTotalsReport,
   setMyCostReport,
   setTsCostReport,
-} from "../store/report";
+} from "./store/report.js";
 import TsCostReportTable from "./sideBarTable/tsCostTable";
 import CherkReportTable from "./sideBarTable/CherkTable";
 import FoamSideBarTab from "./sideBarTable/FoamTable";

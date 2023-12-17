@@ -10,7 +10,6 @@ import HomePage from "./components/HomePage/homePage";
 
 
 import SideBar from "./components/sideBar";
-import Card from "./components/cards/backGround";
 import TableDisplay from "./components/cards/tableDisplay";
 
 function App() {
