@@ -13,7 +13,8 @@ const FoamDataTable = () => {
   const [profit, setProfit] = useState(0);
   const [sold, setSold] = useState(0);
   const foamData = useSelector((state) => state.foamData.foamData);
-
+  const [error, setError] = useState(null);
+  
   const dispatch = useDispatch();
 
  
@@ -124,6 +125,7 @@ const FoamDataTable = () => {
                   className="w-[195px] h-[30px] p-2 rounded"
                   onChange={(e) => setProfit(e.target.value)}
                 />
+                {error && <p className="text-red-500 text-sm">{error}</p>}
               </div>
             </div>
 
