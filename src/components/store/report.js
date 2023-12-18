@@ -5,7 +5,23 @@ const initialState = {
     cherksReport :[],
     totalsReport:[],
     myCostsReport:[],
-    tsCostsReport:[]
+    tsCostsReport:[],
+    net: {
+    startDate: "",
+    endDate: "",
+    Bnet: 0,
+    initialDebt: 0,
+    Snet: 0,
+    TotNet: 0,
+  },
+  PersonalProfit: {
+    startDate: "",
+    endDate: "",
+    Mycost: 0,
+    MyProfit: 0,
+    NetProfit: 0,
+  },
+
 };
 
 export const reportDataSlice = createSlice({
@@ -30,6 +46,12 @@ export const reportDataSlice = createSlice({
     setTsCostReport: (state, action) => {
       state.tsCostsReport = action.payload;
     },
+    setExpenseReport: (state, action) => {
+      state.net = action.payload;
+    },
+    setPersonalExpenseReport: (state, action) => {
+      state.PersonalProfit = action.payload;
+    },
   },
 });
 
@@ -40,5 +62,7 @@ export const {
   setTotalsReport,
   setMyCostReport,
   setTsCostReport,
+  setPersonalExpenseReport,
+  setExpenseReport,
 } = reportDataSlice.actions;
 export default reportDataSlice.reducer;

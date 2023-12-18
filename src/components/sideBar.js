@@ -13,27 +13,20 @@ import {
   setTotalsReport,
   setMyCostReport,
   setTsCostReport,
+  setPersonalExpenseReport,
+  setExpenseReport,
 } from "./store/report.js";
+import ExpenseTab from "./sideBarTable/expenseTable";
+import PersonalExpenseTab from "./sideBarTable/personalExpense";
+
 import TsCostReportTable from "./sideBarTable/tsCostTable";
 import CherkReportTable from "./sideBarTable/CherkTable";
 import FoamSideBarTab from "./sideBarTable/FoamTable";
 const Sidebar = () => {
   const [sprintData, setSprintData] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(null);
 
   const [selectedSprintId, setSelectedSprintId] = useState(null);
-  const reportData = useSelector((state) => state.reportData.reportData);
-  const foamReport = useSelector((state) => state.foamReport.foamReport);
-  const cherksReport = useSelector((state) => state.cherksReport.cherksReport);
-  const totalsReport = useSelector((state) => state.totalsReport.totalsReport);
-  const myCostsReport = useSelector(
-    (state) => state.myCostsReport.myCostsReport
-  );
-  const tsCostsReport = useSelector(
-    (state) => state.tsCostsReport.tsCostsReport
-  );
-  const dispatch = useDispatch();
-
+  
 
   useEffect(() => {
     const fetchSprintData = async () => {
@@ -67,6 +60,9 @@ const Sidebar = () => {
         dispatch(setTotalsReport(reportData.totals));
         dispatch(setMyCostReport(reportData.my_costs));
         dispatch(setTsCostReport(reportData.ts_costs));
+        dispatch(setPersonalExpenseReport(reportData.PersonalProfit));
+        dispatch(setExpenseReport(reportData.net));
+        
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -95,6 +91,12 @@ const Sidebar = () => {
               <MyCostReportTable />
               <div className="flex w-10"></div>
               <TsCostReportTable />
+            </div>
+
+            <div className="flex mt-8">
+              <ExpenseTab />
+              <div className="flex w-10"></div>
+              <PersonalExpenseTab />
             </div>
           </div>
         </div>
