@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Login } from "../../api-helper-function/apiCallerFunction";
 import { useNavigate } from "react-router-dom";
-import { setIsLoggedIn, setLoginToken } from "../store/loginSlice";
 import { useSelector, useDispatch } from "react-redux";
 const UserLogin = () => {
   const [formData, setFormData] = useState({
