@@ -15,7 +15,7 @@ const NavBar = () => {
             </a>
           </li>
           <li>
-            <a href="/logOut" className=" ">
+            <a href="/logout" className=" ">
               LogOut
             </a>
           </li>

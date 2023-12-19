@@ -28,7 +28,7 @@ root.render(
     <Provider store={store}>
       <div className="overflow-x-hidden overflow-y-hidden">
         <div className="flex flex-row space-x-4 mt-4">
-          <a href="/homePage" className="w-1/5 mr-2">
+          <a href="/" className="w-1/5 mr-2">
             <Logo />
           </a>
           <TiltedEllipse />
