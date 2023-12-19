@@ -27,7 +27,7 @@ function App() {
         />
 
         <Route exact path="/register" element={<RegistrationForm />} />
-        <Route exact path="/" element={<UserLogin />} />
+        <Route exact path="/login" element={<UserLogin />} />
         <Route
           exact
           path="/report"
