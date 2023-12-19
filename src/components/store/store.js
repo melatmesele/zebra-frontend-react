@@ -15,6 +15,7 @@ import selectedDataReducer from "./selectedCard";
 import expenseReducer from "./expense";
 import personalExpenseReducer from "./personalExpense";
 import userIdReducer from "./userId";
+import isLoggedInReducer from "./loginSlice";
 export const store = configureStore({
   reducer: {
     sprint: sprintReducer,
@@ -33,5 +34,7 @@ export const store = configureStore({
     expenseData: expenseReducer,
     personalExpense: personalExpenseReducer,
     userId: userIdReducer,
+    isLoggedIn: isLoggedInReducer,
+    
   },
 });

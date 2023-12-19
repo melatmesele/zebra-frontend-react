@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  getFoamData,
+  GetFoamData,
   addFoamData,
 } from "../../api-helper-function/apiCallerFunction";
 import DatePicker from "react-datepicker";
@@ -156,7 +156,7 @@ const FoamTab = () => {
   useEffect(() => {
     const fetchFoamData = async () => {
       try {
-        const data = await getFoamData();
+        const data = await GetFoamData();
         dispatch(setFoamData(data));
       } catch (error) {
         console.error("Error fetching cost data:", error);
