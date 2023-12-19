@@ -17,19 +17,6 @@ const FoamDataTable = () => {
   
   const dispatch = useDispatch();
 
- 
-  useEffect(() => {
-    const fetchFoamData = async () => {
-      try {
-        const data = await getFoamData();
-        dispatch(setFoamData(data));
-      } catch (error) {
-        console.error("Error fetching cost data:", error);
-      }
-    };
-
-    fetchFoamData(); // Call the asynchronous action inside useEffect
-  }, [dispatch]);
 
   const minDate = new Date(
     Math.min(...foamData.map((item) => new Date(item.date)))

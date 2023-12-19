@@ -17,19 +17,6 @@ const CherkDataTable = () => {
   const [error, setError] = useState(null);
   
 
-  useEffect(() => {
-    const fetchCherkData = async () => {
-      try {
-        const data = await getCherkData();
-        dispatch(setCherkData(data));
-      } catch (error) {
-        console.error("Error fetching cost data:", error);
-      }
-    };
-
-    fetchCherkData(); // Call the asynchronous action inside useEffect
-  }, [dispatch]);
-
   const minDate = new Date(
     Math.min(...cherkData.map((item) => new Date(item.date)))
   );

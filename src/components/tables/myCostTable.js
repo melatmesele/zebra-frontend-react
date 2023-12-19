@@ -13,20 +13,6 @@ const MyCostDataTable = () => {
   const myCostData = useSelector((state) => state.spent.spent);
   const dispatch = useDispatch();
 
- 
-  useEffect(() => {
-    const fetchMyCostData = async () => {
-      try {
-        const data = await getMyCostData();
-        dispatch(setSpent(data));
-      } catch (error) {
-        console.error("Error fetching cost data:", error);
-      }
-    };
-
-    fetchMyCostData(); // Call the asynchronous action inside useEffect
-  }, [dispatch]);
-
   const minDate = new Date(
     Math.min(...myCostData.map((item) => new Date(item.date)))
   );

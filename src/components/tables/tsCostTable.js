@@ -14,20 +14,6 @@ const TsCostDataTable = () => {
   const tsCostData = useSelector((state) => state.tsCost.tsCostSpent);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const fetchTsCostData = async () => {
-      try {
-        const data = await getTsCostData();
-        dispatch(setTsCostSpent(data));
-      } catch (error) {
-        console.error("Error fetching cost data:", error);
-      }
-    };
-
-    fetchTsCostData(); // Call the asynchronous action inside useEffect
-  }, [dispatch]);
-  // Function to format the date as "yyyy/mm/dd"
-  // Function to format the date as "year/month/date"
   const minDate = new Date(
     Math.min(...tsCostData.map((item) => new Date(item.date)))
   );

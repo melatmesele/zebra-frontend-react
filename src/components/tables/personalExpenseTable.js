@@ -30,7 +30,6 @@ const PersonalExpenseTab = () => {
     const fetchExpenseData = async () => {
       try {
         const data = await getPersonalExpenseData();
-        console.log("fff", data.PersonalProfit);
         dispatch(setMyCostExpense(data.PersonalProfit.Mycost));
         dispatch(setMyProfitExpense(data.PersonalProfit.MyProfit));
         dispatch(setNetProfitExpense(data.PersonalProfit.NetProfit));
