@@ -26,6 +26,7 @@ const Sidebar = () => {
   const [sprintData, setSprintData] = useState([]);
 
   const [selectedSprintId, setSelectedSprintId] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -74,30 +75,31 @@ const Sidebar = () => {
   const handleDateClicked = (id) => {
     setSelectedSprintId(id);
   };
+  
   const DisplayTables = () => {
     if (selectedSprintId) {
       return (
-        <div>
-          <div className="flex flex-col items-center justify-center h-screen m-5">
-            <div className="flex  justify-between ">
-              <FoamSideBarTab />
-              <div className="flex w-10"></div>
-              <CherkReportTable />
-              <div className="flex w-10"></div>
-
-              <BergamoReportTab />
-            </div>
-            <div className="flex mt-8">
-              <MyCostReportTable />
-              <div className="flex w-10"></div>
-              <TsCostReportTable />
-            </div>
-
-            <div className="flex mt-8">
-              <ExpenseTab />
-              <div className="flex w-10"></div>
-              <PersonalExpenseTab />
-            </div>
+        <div className="m-5 flex flex-wrap gap-4">
+          <div className="flex-auto min-w-0">
+            <FoamSideBarTab />
+          </div>
+          <div className="flex-auto min-w-0">
+            <CherkReportTable />
+          </div>
+          <div className="flex-auto min-w-0">
+            <BergamoReportTab />
+          </div>
+          <div className="flex-auto min-w-0">
+            <MyCostReportTable />
+          </div>
+          <div className="flex-auto min-w-0">
+            <TsCostReportTable />
+          </div>
+          <div className="flex-auto min-w-0">
+            <ExpenseTab />
+          </div>
+          <div className="flex-auto min-w-0">
+            <PersonalExpenseTab />
           </div>
         </div>
       );
@@ -105,15 +107,34 @@ const Sidebar = () => {
       return null;
     }
   };
+
   //   console.log("ggg",sprintData)
   return (
     <>
-      {sprintData.map((sprint) => (
-        <div>
-          <button onClick={() => handleDateClicked(sprint.id)}>{sprint.startDate}</button>
+      <div className="flex">
+        {/* Sidebar for Sprint Dates with fixed width */}
+        <div className="bg-white border-r h-screen w-64 min-w-[250px] flex-shrink-0">
+          {" "}
+          {/* Updated classes */}
+          {sprintData.map((sprint) => (
+            <div key={sprint.id} className="hover:bg-gray-100">
+              <button
+                onClick={() => handleDateClicked(sprint.id)}
+                className="w-full text-left p-2 border-b"
+              >
+                {sprint.startDate}
+              </button>
+            </div>
+          ))}
         </div>
-      ))}
-      <DisplayTables />
+
+        {/* Main Content Area */}
+        <div className="flex-grow">
+          {" "}
+          {/* Adjusted margin-left */}
+          <DisplayTables />
+        </div>
+      </div>
     </>
   );
 };
