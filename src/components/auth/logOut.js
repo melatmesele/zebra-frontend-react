@@ -23,7 +23,7 @@ const handleLogout = async () => {
     if (logdata) {
       localStorage.removeItem("token"); 
       dispatch(setToken(null))
-      navigate("/login");
+      navigate('/login');
     } else {
       // Handle logout failure
     }

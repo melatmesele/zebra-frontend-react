@@ -30,6 +30,15 @@ function App() {
         <Route exact path="/login" element={<UserLogin />} />
         <Route
           exact
+          path="/logout"
+          element={
+            <AuthProvider>
+              <LogoutButton />
+            </AuthProvider>
+          }
+        />
+        <Route
+          exact
           path="/report"
           element={
             <AuthProvider>
