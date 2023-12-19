@@ -1,6 +1,4 @@
 // POST request to the Laravel backend
-import { setLoginToken } from '../store/loginSlice';
-
 export const register = async (formData) => {
   try {
     const response = await fetch("http://localhost:8000/api/register", {
