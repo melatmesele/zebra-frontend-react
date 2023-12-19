@@ -57,8 +57,10 @@ const RenderSelectedTable = () => {
       return <MyCostDataTable />;
     case "TS-COST":
       return <TsCostDataTable />;
-    default:
+    case "TOTAL":
       return <BergamoDataTable />;
+    default:
+      return;
   }
 };
 

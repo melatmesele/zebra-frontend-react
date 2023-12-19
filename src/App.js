@@ -8,7 +8,7 @@ import UserLogin from "./components/auth/login";
 import CardApp from "./components/cards/cardDisplay";
 import HomePage from "./components/HomePage/homePage";
 
-
+import { AuthProvider } from "./index";
 import SideBar from "./components/sideBar";
 import TableDisplay from "./components/cards/tableDisplay";
 
@@ -16,14 +16,36 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/homePage" element={<HomePage />} />
+        <Route
+          exact
+          path="/"
+          element={
+            <AuthProvider>
+              <HomePage />
+            </AuthProvider>
+          }
+        />
 
         <Route exact path="/register" element={<RegistrationForm />} />
         <Route exact path="/" element={<UserLogin />} />
-        <Route exact path="/sidebar" element={<SideBar />} />
-        <Route exact path="/:selectedCard" element={<TableDisplay />} />
-
-        
+        <Route
+          exact
+          path="/report"
+          element={
+            <AuthProvider>
+              <SideBar />
+            </AuthProvider>
+          }
+        />
+        <Route
+          exact
+          path="/:selectedCard"
+          element={
+            <AuthProvider>
+              <TableDisplay />
+            </AuthProvider>
+          }
+        />
       </Routes>
     </Router>
   );

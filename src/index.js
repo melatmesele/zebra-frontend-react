@@ -4,9 +4,24 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./components/store/store";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import TiltedEllipse from "./components/HomePage/ellipse";
 import Logo from "./components/HomePage/logo";
+import {useNavigate} from "react-router-dom";
+
+export const AuthProvider = ({ children}) => {
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) navigate("/login");
+    dispatch(setToken(token));
+  });
+
+  return <>{children}</>;
+};
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

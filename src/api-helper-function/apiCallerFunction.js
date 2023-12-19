@@ -1,6 +1,5 @@
 // POST request to the Laravel backend
-import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import { setLoginToken } from '../store/loginSlice';
 
 export const register = async (formData) => {
   try {
@@ -8,7 +7,7 @@ export const register = async (formData) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json", // Ensure Laravel returns JSON
+        "Accept": "application/json", // Ensure Laravel returns JSON
       },
       body: JSON.stringify(formData),
     });
@@ -27,14 +26,14 @@ export const register = async (formData) => {
   }
 };
 
+        //LOGIN
 export const Login = async (formData) => {
   try {
     const response = await fetch("http://localhost:8000/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        // Add your authentication token or credentials here
+        "Accept": "application/json",
       },
       body: JSON.stringify(formData),
     });
@@ -43,11 +42,7 @@ export const Login = async (formData) => {
       const responseData = await response.json();
       if (responseData.token) {
         // Token is present in the response data
-        // Perform the necessary actions with the token
-
-        // return { token: responseData.token };
-        console.log(responseData.token);
-        Cookies.set("token", responseData.token, { expires: 10 });
+        localStorage.setItem("token", responseData.token); // Store the token in local storage
         return responseData;
       } else {
         throw new Error("Token not found in the response data");
@@ -58,89 +53,50 @@ export const Login = async (formData) => {
     }
   } catch (error) {
     console.error("Error:", error);
-    throw error; // Re-throw the error to be handled by the caller
+    throw error;
   }
 };
 
-export const getUserByEmail = async (formData) => {
-  fetch(`http://localhost:8000/api/register=${formData.email}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json", // Ensure Laravel returns JSON
-    },
-    body: JSON.stringify(formData),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      return response.json();
-    })
-    .then((data) => {
-      console.log("Success:", data);
-      // Handle success (e.g., redirect, show message)
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      // Handle errors here (e.g., show error message)
-    });
-};
-
-export const logout = async () => {
+             //LOOUT
+export const Logout = async () => {
+  const token = localStorage.getItem("token");
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+
     const response = await fetch("http://localhost:8000/api/logout", {
-      method: "POST",
+      method: "GET",
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     });
+    
 
     if (response.ok) {
-      // Clear the HTTP-only cookie containing the token
-      // Get the current date and time
-      const now = new Date();
-
-      // Set the expiry time to be in the past (e.g., 1 second ago)
-      const expiryTime = new Date(now.getTime() - 1000); // 1000 milliseconds = 1 second
-
-      // Convert the expiry time to a UTC string
-      const expiryTimeString = expiryTime.toUTCString();
-
-      // Set the cookie with the expiry time in the past
-      document.cookie = `token=; expires=${expiryTimeString}; path=/;`;
-
+      
+      
       return true; // Indicate successful logout
     } else {
       const errorData = await response.json();
-      throw new Error(errorData.message || "Network response was not ok");
+      throw new Error(errorData.message || 'Network response was not ok');
     }
   } catch (error) {
-    console.error("Logout failed:", error);
+    console.error('Logout failed:', error);
     throw error; // Re-throw the error to be handled by the caller
   }
 };
 
-// api.js
+               // DATE PICKER
 export const SelectedDate = async (startDate) => {
+  const token = localStorage.getItem("token");
+
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
-    // Assuming Login function returns user data or token
+   
     const response = await fetch("http://localhost:8000/api/sprint", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`, // Assuming the user object contains a token
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`, // Assuming the user object contains a token
       },
       body: JSON.stringify({ startDate }),
     });
@@ -160,19 +116,20 @@ export const SelectedDate = async (startDate) => {
   }
 };
 
+
+
 // GET FOAM
-export const getFoamData = async () => {
+export const GetFoamData = async () => {
+  const token = localStorage.getItem("token");
+
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+    
     const response = await fetch("http://localhost:8000/api/foams", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
     });
 
@@ -187,20 +144,24 @@ export const getFoamData = async () => {
     throw error;
   }
 };
-export const addFoamData = async (id, sold, profit) => {
-  const data = { sold, profit };
 
+
+
+export const AddFoamData = async (id, sold, profit) => {
+   const token = localStorage.getItem("token");
+
+
+  
+  const data = { sold, profit };
+ 
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+   
     const response = await fetch(`http://localhost:8000/api/foams/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
@@ -216,19 +177,17 @@ export const addFoamData = async (id, sold, profit) => {
     throw error;
   }
 };
-// CHERK API
+      // CHERK API
 export const getCherkData = async () => {
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+      const token = localStorage.getItem("token");
+
     const response = await fetch("http://localhost:8000/api/cherks", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
     });
 
@@ -248,16 +207,14 @@ export const addCherkData = async (id, sold, profit) => {
   const data = { sold, profit };
 
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+       const token = localStorage.getItem("token");
+
     const response = await fetch(`http://localhost:8000/api/cherks/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
@@ -277,16 +234,14 @@ export const addCherkData = async (id, sold, profit) => {
 // MY_COST API
 export const getMyCostData = async () => {
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+       const token = localStorage.getItem("token");
+
     const response = await fetch("http://localhost:8000/api/my-costs", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
     });
 
@@ -306,16 +261,14 @@ export const addMyCostData = async (id, cost) => {
   const data = { cost };
 
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+       const token = localStorage.getItem("token");
+
     const response = await fetch(`http://localhost:8000/api/my-costs/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
@@ -332,20 +285,18 @@ export const addMyCostData = async (id, cost) => {
   }
 };
 
-// Ts-Cost API
+     // Ts-Cost API
 
 export const getTsCostData = async () => {
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+       const token = localStorage.getItem("token");
+
     const response = await fetch("http://localhost:8000/api/ts-costs", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
     });
 
@@ -365,16 +316,14 @@ export const addTsCostData = async (id, cost) => {
   const data = { cost };
 
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+       const token = localStorage.getItem("token");
+
     const response = await fetch(`http://localhost:8000/api/ts-costs/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
@@ -395,16 +344,14 @@ export const addTsCostData = async (id, cost) => {
 export const getInactivateSprintData = async () => {
   // console.log("in getter")
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+       const token = localStorage.getItem("token");
+
     const response = await fetch("http://localhost:8000/api/inactive-sprints", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
     });
 
@@ -421,22 +368,22 @@ export const getInactivateSprintData = async () => {
   }
 };
 
+
+
 //get Report
 
 export const getReportData = async (id) => {
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+       const token = localStorage.getItem("token");
+
     const response = await fetch(
       `http://localhost:8000/api/sprint-report/${id}`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${token}`,
+          "Accept": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
       }
     );
@@ -453,19 +400,17 @@ export const getReportData = async (id) => {
   }
 };
 
-//Bergamo Api
+      //Bergamo Api
 export const getBergamoData = async () => {
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+      const token = localStorage.getItem("token");
+
     const response = await fetch("http://localhost:8000/api/totals", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
     });
 
@@ -481,20 +426,18 @@ export const getBergamoData = async () => {
   }
 };
 
-export const addBergamoData = async (id, sold, bergamod) => {
-  const data = { sold, bergamod };
+export const addBergamoData = async (id, sold,bergamod) => {
+  const data = { sold,bergamod };
 
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+       const token = localStorage.getItem("token");
+
     const response = await fetch(`http://localhost:8000/api/totals/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
@@ -513,13 +456,12 @@ export const addBergamoData = async (id, sold, bergamod) => {
 
 //  Get DEACTIVATED SPRINT
 export const addDeactivateSprintData = async (id) => {
+  
+
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
-    const response = await fetch(
-      `http://localhost:8000/api/sprint/deactivate/${id}`,
+       const token = localStorage.getItem("token");
+
+    const response = await fetch(`http://localhost:8000/api/sprint/deactivate/${id}`,
       {
         method: "PUT",
         headers: {
@@ -527,6 +469,7 @@ export const addDeactivateSprintData = async (id) => {
           Accept: "application/json",
           Authorization: `Bearer ${token}`,
         },
+        
       }
     );
 
@@ -542,13 +485,13 @@ export const addDeactivateSprintData = async (id) => {
   }
 };
 
+
+
 // Get Expense
 export const getExpenseData = async () => {
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+       const token = localStorage.getItem("token");
+
     const response = await fetch(
       "http://localhost:8000/api/sprint/expense-data",
       {
@@ -573,13 +516,12 @@ export const getExpenseData = async () => {
   }
 };
 
-// Get Personal Expense
+
+// Get Personal Expense 
 export const getPersonalExpenseData = async () => {
   try {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+       const token = localStorage.getItem("token");
+
     const response = await fetch(
       "http://localhost:8000/api/sprint/personal-expense",
       {
