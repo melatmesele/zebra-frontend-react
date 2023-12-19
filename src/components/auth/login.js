@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Login } from "../../api-helper-function/apiCallerFunction";
 import { useNavigate } from "react-router-dom";
-
+import { setIsLoggedIn, setLoginToken } from "../store/loginSlice";
+import { useSelector, useDispatch } from "react-redux";
 const UserLogin = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -9,6 +10,8 @@ const UserLogin = () => {
   });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,11 +21,11 @@ const UserLogin = () => {
     e.preventDefault();
 
     try {
-      const loggedIn = await Login(formData);
-      if (loggedIn) {
-        navigate("/homePage");
+      const logdata = await Login(formData);
+
+      if (logdata && logdata.token) {
+        navigate("/");
       } else {
-        // Clear the password field
         setError("Invalid email or password");
       }
     } catch (error) {
