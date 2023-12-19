@@ -26,7 +26,7 @@ const Sidebar = () => {
   const [sprintData, setSprintData] = useState([]);
 
   const [selectedSprintId, setSelectedSprintId] = useState(null);
-  
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchSprintData = async () => {
