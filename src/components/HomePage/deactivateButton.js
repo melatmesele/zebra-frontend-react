@@ -4,21 +4,13 @@ import {
   getCherkData,
 } from "../../api-helper-function/apiCallerFunction";
 import { useSelector, useDispatch } from "react-redux";
-import { setIsSprintActive } from "../../store/sprintSlice";
-import { setSprintId } from "../../store/sprintSlice";
-import { setFoamData } from "../../store/foamSlice";
-import { setCherkData } from "../../store/cherkSlice";
-import { setBergamoData } from "../../store/bergamo";
-import { setSpent } from "../../store/cost";
-import { setTsCostSpent } from "../../store/tsCostSlice";
-import {
-  setBnetData,
-  setSnetData,
-  setTotNetData,
-  setInitialDebtData,
-  setStartDateExpense,
-  setEndDateExpense,
-} from "../../store/expense";
+import { setIsSprintActive } from "../store/sprintSlice";
+import { setSprintId } from "../store/sprintSlice";
+import { setFoamData } from "../store/foamSlice";
+import { setCherkData } from "../store/cherkSlice";
+import { setBergamoData } from "../store/bergamo";
+import { setSpent } from "../store/cost";
+import { setTsCostSpent } from "../store/tsCostSlice";
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
