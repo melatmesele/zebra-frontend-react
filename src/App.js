@@ -11,6 +11,7 @@ import HomePage from "./components/HomePage/homePage";
 import { AuthProvider } from "./index";
 import SideBar from "./components/sideBar";
 import TableDisplay from "./components/cards/tableDisplay";
+import LogoutButton from "./components/auth/logOut";
 
 function App() {
   return (
