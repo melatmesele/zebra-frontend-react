@@ -1,4 +1,4 @@
-import React from "react";
+import React, {  useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -7,9 +7,9 @@ import { store } from "./components/store/store";
 import { Provider, useDispatch } from "react-redux";
 import TiltedEllipse from "./components/HomePage/ellipse";
 import Logo from "./components/HomePage/logo";
-import {useNavigate} from "react-router-dom";
-
-export const AuthProvider = ({ children}) => {
+import { useNavigate } from "react-router-dom";
+import { setToken } from "./components/store/loginSlice";
+export const AuthProvider = ({ children }) => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();

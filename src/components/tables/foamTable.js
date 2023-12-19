@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   GetFoamData,
-  addFoamData,
+  AddFoamData,
 } from "../../api-helper-function/apiCallerFunction";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -50,7 +50,7 @@ const FoamDataTable = () => {
       else{
       if (selectedId) {
         try {
-          const response = await addFoamData(selectedId, sold, profit);
+          const response = await AddFoamData(selectedId, sold, profit);
           if (response) {
             const updatedFoamData = foamData.map((item) =>
               item.id === selectedId

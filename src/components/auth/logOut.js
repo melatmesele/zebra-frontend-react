@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {Logout} from '../api-helper-function/apiCallerFunction'
+import {Logout} from '../../api-helper-function/apiCallerFunction'
 import { useSelector, useDispatch } from "react-redux";
 import {setIsLoggedIn, setToken} from '../store/loginSlice'
 const LogoutButton = () => {
