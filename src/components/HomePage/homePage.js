@@ -6,12 +6,19 @@ import ExpenseTab from "../tables/expenseTable.js";
 import PersonalExpenseTab from "../tables/personalExpenseTable.js";
 const HomePage = () => {
   return (
-    <div className="md:fixed">
-      <CardApp />
-      <StartDatePicker />
+    <div className="flex flex-col min-h-screen gap-10 mt-20 md:mt-10 sm:mt-6">
+      <div>
+        <CardApp />
+      </div>
 
-      <ExpenseTab />
-      <PersonalExpenseTab />
+      <div className="flex flex-row flex-wrap justify-center gap-4 mb-4">
+        <ExpenseTab />
+        <PersonalExpenseTab />
+      </div>
+
+      <div className="fixed bottom-4 left-4">
+        <StartDatePicker />
+      </div>
     </div>
   );
 };

@@ -43,35 +43,34 @@ const ExpenseTab = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-white w-full md:w-[719px] mx-auto mt-10 md:ml-[310px] md:mt-[56px] border-4 border-primary">
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <div className="overflow-x-auto">
+      <table className="min-w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" class="px-10 py-3">
+            <th scope="col" class="px-10 py-3 whitespace-nowrap">
               Date
             </th>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" class="px-6 py-3 whitespace-nowrap">
               Bnet
             </th>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" class="px-6 py-3 whitespace-nowrap">
               Initial Debt
             </th>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" class="px-6 py-3 whitespace-nowrap">
               Snet
             </th>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" class="px-6 py-3 whitespace-nowrap">
               TotNet
             </th>
           </tr>
         </thead>
         <tbody>
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td>{`${startDate}-${endDate}`}</td>
-
-            <td>{bnetData}</td>
-            <td>{initialDebt}</td>
-            <td>{snetData}</td>
-            <td>{totNetData}</td>
+            <td className="px-12 py-3 whitespace-nowrap">{`${startDate}-${endDate}`}</td>
+            <td className="whitespace-nowrap">{bnetData}</td>
+            <td className="whitespace-nowrap">{initialDebt}</td>
+            <td className="whitespace-nowrap">{snetData}</td>
+            <td className="whitespace-nowrap">{totNetData}</td>
           </tr>
         </tbody>
       </table>

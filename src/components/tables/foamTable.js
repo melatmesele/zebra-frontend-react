@@ -17,7 +17,6 @@ const FoamDataTable = () => {
   
   const dispatch = useDispatch();
 
- 
 
   const minDate = new Date(
     Math.min(...foamData.map((item) => new Date(item.date)))

@@ -24,22 +24,30 @@ const CardApp = () => {
   const cardContents = ["FOAM", "TOTAL", "SOLD", "MY-COST", "TS-COST"];
   return (
     <div>
-      <div className="flex flex-col items-center -mt-[65px] justify-center h-screen ">
-        <div className="flex space-x-6 -mb-10">
+      <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-wrap justify-center gap-6 mb-6">
           {cardContents.slice(0, 3).map((content, index) => (
-            <div key={index} onClick={() => handleCardClick(content)}>
+            <div
+              key={index}
+              onClick={() => handleCardClick(content)}
+              className="flex-shrink-0"
+            >
               <Card text={content} />
             </div>
           ))}
         </div>
-        <div className="flex space-x-6 -mt-[75px] ">
+        <div className="flex flex-wrap justify-center gap-6 mt-6">
           {cardContents.slice(3).map((content, index) => (
-            <div key={index} onClick={() => handleCardClick(content)}>
+            <div
+              key={index}
+              onClick={() => handleCardClick(content)}
+              className="flex-shrink-0"
+            >
               <Card text={content} />
             </div>
           ))}
         </div>
-        {selectedCard && <TableDisplay />};
+        {selectedCard && <TableDisplay />}
       </div>
     </div>
   );

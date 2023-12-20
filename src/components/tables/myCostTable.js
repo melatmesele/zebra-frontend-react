@@ -13,20 +13,6 @@ const MyCostDataTable = () => {
   const myCostData = useSelector((state) => state.spent.spent);
   const dispatch = useDispatch();
 
- 
-  useEffect(() => {
-    const fetchMyCostData = async () => {
-      try {
-        const data = await getMyCostData();
-        dispatch(setSpent(data));
-      } catch (error) {
-        console.error("Error fetching cost data:", error);
-      }
-    };
-
-    fetchMyCostData(); // Call the asynchronous action inside useEffect
-  }, [dispatch]);
-
   const minDate = new Date(
     Math.min(...myCostData.map((item) => new Date(item.date)))
   );
@@ -81,7 +67,7 @@ const MyCostDataTable = () => {
   };
 
   return (
-    <div className="bg-white w-full md:w-[719px] mx-auto mt-10 md:ml-[310px] md:mt-[56px] border-4 border-primary">
+    <div className="overflow-x-auto bg-white w-full md:w-[719px] mx-auto mt-10 md:ml-[310px] md:mt-[56px] border-4 border-primary">
       <div className="text-2xl ml-4 md:ml-[30px]">My-Cost Data Table</div>
       <div className="flex space-x-5">
         <div className="">
