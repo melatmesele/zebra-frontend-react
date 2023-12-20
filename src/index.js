@@ -31,7 +31,6 @@ root.render(
           <a href="/" className="w-1/5 mr-2">
             <Logo />
           </a>
-          <TiltedEllipse />
         </div>
         <App />
       </div>
