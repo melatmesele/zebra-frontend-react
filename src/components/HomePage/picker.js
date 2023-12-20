@@ -49,8 +49,8 @@ const StartDatePicker = () => {
   }
 
   return (
-    <div className="container -mr-[50px]  ">
-      <div className=" w-[6700px] h-[450px] -mt-[850px]   ">
+    <div className="container">
+      <div className=" w-auto h-auto ">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DemoContainer components={["DatePicker"]}>
             {!isSprintActive && (
@@ -68,7 +68,6 @@ const StartDatePicker = () => {
         </LocalizationProvider>
       </div>
     </div>
-  
   );
 };
 

@@ -11,10 +11,12 @@ import { AuthProvider } from "./index";
 import SideBar from "./components/sideBar";
 import TableDisplay from "./components/cards/tableDisplay";
 import LogoutButton from "./components/auth/logOut";
+import NavBar from "./components/HomePage/navBar";
 
 function App() {
   return (
     <Router>
+      <NavBar />
       <Routes>
         <Route
           exact

@@ -14,20 +14,6 @@ const BergamoDataTable = () => {
   const bergamoData = useSelector((state) => state.bergamoData.bergamoData);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const fetchBergamoData = async () => {
-      try {
-        const data = await getBergamoData();
-        dispatch(setBergamoData(data));
-      } catch (error) {
-        console.error("Error fetching foam data:", error);
-      }
-    };
-
-    fetchBergamoData();
-  }, [dispatch]);
-  // Function to format the date as "yyyy/mm/dd"
-  // Function to format the date as "year/month/date"
   const formatSelectedDate = (date) => {
     const year = date.getFullYear();
     const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Adding 1 because getMonth() returns 0-based month
@@ -181,9 +167,9 @@ const BergamoTab = () => {
     return { totalSold, totalCherk, totalBergamo, grandTotal };
   };
   return (
-    <div>
+    <div className="overflow-x-auto">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400  ">
           <tr>
             <th scope="col" class="px-10 py-3">
               Date
