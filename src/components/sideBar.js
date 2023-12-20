@@ -6,7 +6,7 @@ import {
 
 import MyCostReportTable from "./sideBarTable/myCostTable";
 import BergamoReportTab from "./sideBarTable/bergamoTable";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import {
   setFoamReport,
   setCherkReport,
@@ -27,7 +27,7 @@ const Sidebar = () => {
 
   const [selectedSprintId, setSelectedSprintId] = useState(null);
   
-
+  const dispatch = useDispatch()
   useEffect(() => {
     const fetchSprintData = async () => {
       try {

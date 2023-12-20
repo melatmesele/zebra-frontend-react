@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Login } from "../../api-helper-function/apiCallerFunction";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 const UserLogin = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -9,7 +8,6 @@ const UserLogin = () => {
   });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
 
   const handleInputChange = (e) => {

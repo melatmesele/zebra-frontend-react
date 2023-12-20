@@ -131,7 +131,7 @@ const DeactivateButton = () => {
   const handleDeactiveSprint = async () => {
     if (sprint_id) {
       try {
-        const response = await addDeactivateSprintData(sprint_id);
+        await addDeactivateSprintData(sprint_id);
 
         dispatch(setIsSprintActive(false));
         dispatch(setFoamData([]));

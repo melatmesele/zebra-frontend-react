@@ -1,5 +1,5 @@
 // import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
 import { useSelector, useDispatch } from "react-redux";
 import {
   setSprintId,
@@ -16,7 +16,7 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { useState, useEffect } from "react";
+import {  useEffect } from "react";
 
 const StartDatePicker = () => {
   const isSprintActive = useSelector((state) => state.sprint.isSprintActive);
@@ -27,7 +27,8 @@ const StartDatePicker = () => {
   useEffect(() => {
     const fetchExpenseData = async () => {
       try {
-        const data = await getExpenseData();
+        await getExpenseData();
+
 
         dispatch(setIsSprintActive(true)); // Set isSprintActive to true if data is truthy
         // Set isSprintActive to false if data is falsy

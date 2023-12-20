@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "./backGround";
 import FoamDataTable from "../tables/foamTable";
 import CherkDataTable from "../tables/cherkTable";
@@ -10,7 +10,6 @@ import TableDisplay from "./tableDisplay";
 import BergamoDataTable from "../tables/bergamoTable";
 import { useNavigate } from "react-router-dom";
 const CardApp = () => {
-  const [selectedCard, setSelectedCard] = useState(null);
   const selectedData = useSelector((state) => state.selectedData.selectedData);
   const dispatch = useDispatch();
 
@@ -39,7 +38,7 @@ const CardApp = () => {
             </div>
           ))}
         </div>
-        {selectedCard && <TableDisplay />};
+        {selectedData && <TableDisplay />};
       </div>
     </div>
   );

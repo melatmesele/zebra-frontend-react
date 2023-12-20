@@ -6,11 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const RegistrationForm = () => {
-  const [selectedCard, setSelectedCard] = useState(null);
-
-  const handleCardClick = (card) => {
-    setSelectedCard(card);
-  };
+ 
 
   const [formData, setFormData] = useState({
     name: "",
@@ -19,7 +15,6 @@ const RegistrationForm = () => {
   });
   const [errors, setErrors] = useState({});
   const [emailErrors, setEmailErrors] = useState(null);
-  const [passwordErrors, setPasswordErrors] = useState(null);
 
   const navigate = useNavigate();
   // Update form state based on input

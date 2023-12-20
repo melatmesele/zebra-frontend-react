@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect } from "react";
 import {
   getBergamoData,
-  addBergamoData,
 } from "../../api-helper-function/apiCallerFunction";
 
 import { useSelector, useDispatch } from "react-redux";

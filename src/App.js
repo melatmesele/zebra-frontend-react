@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Import your components for the routes
 import RegistrationForm from "./components/auth/registration";
 import UserLogin from "./components/auth/login";
-import CardApp from "./components/cards/cardDisplay";
 import HomePage from "./components/HomePage/homePage";
 
 import { AuthProvider } from "./index";
