@@ -13,6 +13,9 @@ const initialState = {
     initialDebt: 0,
     Snet: 0,
     TotNet: 0,
+    minDate:"",
+    maxDate:"",
+    sprintIdd:""
   },
   PersonalProfit: {
     startDate: "",
@@ -52,6 +55,15 @@ export const reportDataSlice = createSlice({
     setPersonalExpenseReport: (state, action) => {
       state.PersonalProfit = action.payload;
     },
+    setMinDate:(state,action)=>{
+      state.minDate = action.payload
+    },
+    setMaxDate:(state,action)=>{
+      state.maxDate = action.payload
+    },
+    setSprintIdd:(state,action)=>{
+      state.sprintIdd = action.payload
+    }
   },
 });
 
@@ -64,5 +76,8 @@ export const {
   setTsCostReport,
   setPersonalExpenseReport,
   setExpenseReport,
+  setMinDate,
+  setMaxDate,
+  setSprintIdd
 } = reportDataSlice.actions;
 export default reportDataSlice.reducer;
