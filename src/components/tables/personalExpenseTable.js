@@ -68,7 +68,7 @@ const PersonalExpenseTab = () => {
             <td className="px-12 py-3 whitespace-nowrap">{`${startDate}-${endDate}`}</td>
             <td className="whitespace-nowrap">{MyProfit}</td>
             <td className="whitespace-nowrap">{Mycost}</td>
-            <td className="whitespace-nowrap">{NetProfit}</td>
+            <td className="whitespace-nowrap">{NetProfit.toFixed(2)}</td>
           </tr>
         </tbody>
       </table>

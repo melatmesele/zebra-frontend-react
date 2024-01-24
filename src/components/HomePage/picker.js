@@ -1,12 +1,9 @@
-// import DatePicker from "react-datepicker";
-
 import { useSelector, useDispatch } from "react-redux";
 import {
   setSprintId,
   setIsSprintActive,
  
 } from "../store/sprintSlice";
-
 import dayjs from "dayjs";
 import { getExpenseData } from "../../api-helper-function/apiCallerFunction";
 import { SelectedDate } from "../../api-helper-function/apiCallerFunction"; // Import your API function for sending data to the backend
@@ -17,7 +14,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import {  useEffect } from "react";
-
+import InitialDebtForm from "./initialDebtForm"; 
 const StartDatePicker = () => {
   const isSprintActive = useSelector((state) => state.sprint.isSprintActive);
   const startDate = useSelector((state) => state.sprint.startDate);
@@ -63,7 +60,11 @@ const StartDatePicker = () => {
                 onChange={handleDateChange}
               />
             )}
-            {isSprintActive && <DeactivateButton />}
+            {isSprintActive && 
+              <div>
+                <DeactivateButton />  
+                <InitialDebtForm/>
+              </div>}
           </DemoContainer>
         </LocalizationProvider>
       </div>

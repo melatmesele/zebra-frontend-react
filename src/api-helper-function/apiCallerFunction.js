@@ -441,7 +441,7 @@ export const addBergamoData = async (id, sold,bergamod) => {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to update foam data");
+      throw new Error("Failed to update bergamo data");
     }
 
     const updatedData = await response.json();
@@ -543,3 +543,40 @@ export const getPersonalExpenseData = async () => {
     throw error;
   }
 };
+
+
+
+
+// POST  INITIAL DEBT
+export const AddInitialDebtData = async (sprintId, debt) => {
+  const data = { debt };
+
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+      `http://localhost:8000/api/sprint-debt/${sprintId}`,
+
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to update foam data");
+    }
+
+    const updatedData = await response.json();
+    return updatedData.debt;
+  } catch (error) {
+    console.error("Error updating foam data:", error);
+    throw error;
+  }
+};
+

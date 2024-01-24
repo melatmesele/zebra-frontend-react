@@ -67,10 +67,10 @@ const ExpenseTab = () => {
         <tbody>
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <td className="px-12 py-3 whitespace-nowrap">{`${startDate}-${endDate}`}</td>
-            <td className="whitespace-nowrap">{bnetData}</td>
+            <td className="whitespace-nowrap">{bnetData.toFixed(2)}</td>
             <td className="whitespace-nowrap">{initialDebt}</td>
             <td className="whitespace-nowrap">{snetData}</td>
-            <td className="whitespace-nowrap">{totNetData}</td>
+            <td className="whitespace-nowrap">{totNetData.toFixed(2)}</td>
           </tr>
         </tbody>
       </table>

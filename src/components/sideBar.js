@@ -29,6 +29,7 @@ import CherkTableEditor from "./sideBarTable/EditingReports/cherkTableEditor.js"
 import FoamTableEditor from "./sideBarTable/EditingReports/foamTableEditer.js";
 import TsCostTableEditor from "./sideBarTable/EditingReports/tsCostTableEditor.js";
 import MyCostTableEditor from "./sideBarTable/EditingReports/myCostTableEditor.js";
+import InitialDebtEditor from "./sideBarTable/EditingReports/initialDebtEditor.js";
 import FoamSideBarTab from "./sideBarTable/FoamTable";
 
 const Sidebar = () => {
@@ -41,6 +42,8 @@ const Sidebar = () => {
   const [isBergamoEditing, setIsBergamoEditing] = useState(false);
   const [isMyCostEditing, setIsMyCostEditing] = useState(false);
   const [isTsCostEditing, setIsTsCostEditing] = useState(false);
+  const [isInitialDebtEditing, setIsInitialDebtEditing] = useState(false);
+
   const handleFoamEditForm = () => {
     setIsFoamEditing(true);
   };
@@ -55,8 +58,11 @@ const Sidebar = () => {
   };
   const handleTsCostEditForm = () => {
     setIsTsCostEditing(true);
+
   };
- 
+  const handleInitialDebtEditForm = () => {
+    setIsInitialDebtEditing(true);
+  };
   const handleFoamCancel = () => {
     setIsFoamEditing(false);
   };
@@ -71,6 +77,9 @@ const Sidebar = () => {
   };
   const handleTsCostEditCancel = () => {
     setIsTsCostEditing(false);
+  };
+  const handleInitialDebtEditCancel = () => {
+    setIsInitialDebtEditing(false);
   };
 
   useEffect(() => {
@@ -192,6 +201,16 @@ const Sidebar = () => {
           </div>
           <div className="flex-auto min-w-0">
             <ExpenseTab />
+            {!isInitialDebtEditing && (
+              <EditIcon
+                className="edit-icon "
+                onClick={handleInitialDebtEditForm}
+              />
+            )}
+            {isInitialDebtEditing && <InitialDebtEditor />}
+            {isInitialDebtEditing && (
+              <button onClick={handleInitialDebtEditCancel}>Cancel</button>
+            )}
           </div>
           <div className="flex-auto min-w-0">
             <PersonalExpenseTab />
