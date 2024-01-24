@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setIsSprintActive } from "../store/sprintSlice";
 import { setSprintId } from "../store/sprintSlice";
 import { setFoamData } from "../store/foamSlice";
+import { setBnetData ,setSnetData , setTotNetData,setInitialDebtData, setStartDateExpense,setEndDateExpense} from "../store/expense";
+import { setMyCostExpense ,setMyProfitExpense,setNetProfitExpense,setStartDateExpenses,setEndDateExpenses} from "../store/personalExpense";
 import { setCherkData } from "../store/cherkSlice";
 import { setBergamoData } from "../store/bergamo";
 import { setSpent } from "../store/cost";
@@ -16,7 +18,8 @@ import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 const DeactivateButton = () => {
   const sprint_id = useSelector((state) => state.sprint.sprintId);
-
+  const startDate = useSelector((state) => state.personalExpense.startDate);
+  const endDate = useSelector((state) => state.personalExpense.endDate);
   const [open, setOpen] = useState(false);
   const handleSprint = () => {
     setOpen(true);
@@ -139,6 +142,29 @@ const DeactivateButton = () => {
         dispatch(setBergamoData([]));
         dispatch(setSpent([]));
         dispatch(setTsCostSpent([]));
+        dispatch(setMyCostExpense(0));
+        dispatch(setMyProfitExpense(0));
+        dispatch(setNetProfitExpense(0));
+        // dispatch(setStartDateExpenses(startDate));
+        // dispatch(setEndDateExpenses(endDate));
+        dispatch(setBnetData(0));
+        dispatch(setSnetData(0));
+        dispatch(setTotNetData(0));
+        // dispatch(setStartDateExpense(""));
+        // dispatch(setEndDateExpense(""));
+
+
+        // dispatch(setInitialDebtData(""));
+
+
+
+
+
+
+
+
+
+
       } catch (error) {
         console.error("Error sending data to the backend:", error);
       }

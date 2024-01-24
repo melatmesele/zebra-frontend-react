@@ -9,8 +9,8 @@ import {
   setMyCostExpense,
   setMyProfitExpense,
   setNetProfitExpense,
-  setStartDateExpense,
-  setEndDateExpense,
+  setStartDateExpenses,
+  setEndDateExpenses,
 } from "../store/personalExpense";
 
 const PersonalExpenseTab = () => {
@@ -33,8 +33,8 @@ const PersonalExpenseTab = () => {
         dispatch(setMyCostExpense(data.PersonalProfit.Mycost));
         dispatch(setMyProfitExpense(data.PersonalProfit.MyProfit));
         dispatch(setNetProfitExpense(data.PersonalProfit.NetProfit));
-        dispatch(setStartDateExpense(data.PersonalProfit.startDate));
-        dispatch(setEndDateExpense(data.PersonalProfit.endDate));
+        dispatch(setStartDateExpenses(data.PersonalProfit.startDate));
+        dispatch(setEndDateExpenses(data.PersonalProfit.endDate));
      
       } catch (error) {
         console.error("Error fetching cost data:", error);
@@ -68,7 +68,7 @@ const PersonalExpenseTab = () => {
             <td className="px-12 py-3 whitespace-nowrap">{`${startDate}-${endDate}`}</td>
             <td className="whitespace-nowrap">{MyProfit}</td>
             <td className="whitespace-nowrap">{Mycost}</td>
-            <td className="whitespace-nowrap">{NetProfit.toFixed(2)}</td>
+            <td className="whitespace-nowrap">{NetProfit}</td>
           </tr>
         </tbody>
       </table>

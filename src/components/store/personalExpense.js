@@ -20,10 +20,10 @@ export const personalExpenseSlice = createSlice({
     setNetProfitExpense: (state, action) => {
       state.NetProfit = action.payload;
     },
-    setStartDateExpense: (state, action) => {
+    setStartDateExpenses: (state, action) => {
       state.startDate = action.payload;
     },
-    setEndDateExpense: (state, action) => {
+    setEndDateExpenses: (state, action) => {
       state.endDate = action.payload;
     },
   },
@@ -33,7 +33,7 @@ export const {
   setMyCostExpense,
   setMyProfitExpense,
   setNetProfitExpense,
-  setStartDateExpense,
-  setEndDateExpense,
+  setStartDateExpenses,
+  setEndDateExpenses,
 } = personalExpenseSlice.actions;
 export default personalExpenseSlice.reducer;
