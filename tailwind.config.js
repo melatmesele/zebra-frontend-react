@@ -26,5 +26,5 @@ module.exports = {
       "5xl": "3.052rem",
     },
   },
- 
+  plugins: [require("@tailwindcss/forms"), require("flowbite/plugin")],
 };

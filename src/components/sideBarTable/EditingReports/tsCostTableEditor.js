@@ -79,7 +79,7 @@ const TsCostTableEditor = () => {
           <DatePicker
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
-            className="border-color-rgb(203 213 225) rounded mt-2 w-full h-[30px]"
+            className="border-color-rgb(203 213 225) rounded w-full h-[30px]"
             dateFormat="yyyy/MM/dd"
             minDate={minDate}
             maxDate={maxDate}

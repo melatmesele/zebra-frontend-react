@@ -80,7 +80,7 @@ const MyCostTableEditor = () => {
           <DatePicker
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
-            className="border rounded mt-2 w-full h-[30px]"
+            className="border rounded w-full h-[30px]"
             dateFormat="yyyy/MM/dd"
             minDate={minDate}
             maxDate={maxDate}

@@ -189,7 +189,7 @@ const FoamTab = () => {
               Date
             </th>
             <th scope="col" class="px-6 py-3">
-              Sold
+              Bought
             </th>
             <th scope="col" class="px-6 py-3">
               Percentage

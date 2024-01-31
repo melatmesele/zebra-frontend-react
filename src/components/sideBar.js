@@ -153,144 +153,149 @@ const Sidebar = () => {
   const DisplayTables = () => {
     if (selectedSprintId) {
       return (
-        <div className="m-5 flex flex-wrap gap-4">
-          <div className="flex-grow w-100">
+        <>
+          <div className="flex w-100 justify-end">
             <div>
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+                className="h-[30px] px-4 rounded bg-primary"
                 onClick={() => handleDownload(selectedSprintId)}
               >
                 Download
               </button>
             </div>
           </div>
-          <div className="flex-auto min-w-0">
-            <h1>FOAM REPORT</h1>
-            <div>
-              {!isFoamEditing && (
-                <EditIcon className="edit-icon " onClick={handleFoamEditForm} />
-              )}
-              <div className="flex flex-row justify-center items-center space-x-4 mb-4">
-                {isFoamEditing && <FoamTableEditor />}
-                {isFoamEditing && (
-                  <button onClick={handleFoamCancel}>Cancel</button>
+          <div className="m-5 flex flex-wrap gap-4">
+            <div className="flex-auto min-w-0">
+              <h1>FOAM REPORT</h1>
+              <div>
+                {!isFoamEditing && (
+                  <EditIcon
+                    className="edit-icon "
+                    onClick={handleFoamEditForm}
+                  />
                 )}
-              </div>
-            </div>
-
-            <FoamSideBarTab />
-          </div>
-          <div className="flex flex-col min-w-0">
-            <h1>CHERK REPORT</h1>
-            <div>
-              {!isCherkEditing && (
-                <EditIcon
-                  className="edit-icon "
-                  onClick={handleCherkEditForm}
-                />
-              )}
-              <div className="flex flex-row justify-center items-center space-x-4 mb-4">
-                {isCherkEditing && <CherkTableEditor />}
-                {isCherkEditing && (
-                  <button onClick={handleCherkEditCancel}>Cancel</button>
-                )}
-              </div>
-            </div>
-            <CherkReportTable />
-          </div>
-          <div className="flex flex-col min-w-0">
-            <h1>BERGAMOD REPORT</h1>
-            <div>
-              {!isBergamoEditing && (
-                <EditIcon
-                  className="edit-icon"
-                  onClick={handleBergamoEditForm}
-                />
-              )}
-              <div className="flex flex-row justify-center items-center space-x-4 mb-4">
-                {isBergamoEditing && <EditedBergamoTable />}
-                {isBergamoEditing && (
-                  <button className="" onClick={handleBergamoEditCancel}>
-                    Cancel
-                  </button>
-                )}
-              </div>
-            </div>
-
-            <BergamoReportTab />
-          </div>
-
-          <div className="flex-auto min-w-0">
-            <h1>MY COST REPORT</h1>
-            <div>
-              {!isMyCostEditing && (
-                <EditIcon
-                  className="edit-icon "
-                  onClick={handleMyCostEditForm}
-                />
-              )}
-              <div className="flex flex-row justify-center items-center space-x-4 mb-4">
-                {isMyCostEditing && <MyCostTableEditor />}
-                {isMyCostEditing && (
-                  <button onClick={handleMyCostEditCancel}>Cancel</button>
-                )}
-              </div>
-            </div>
-
-            <MyCostReportTable />
-          </div>
-          <div className="flex-auto min-w-0">
-            <h1>T'S COST REPORT</h1>
-            <div>
-              {!isTsCostEditing && (
-                <EditIcon
-                  className="edit-icon "
-                  onClick={handleTsCostEditForm}
-                />
-              )}
-              <div className="flex flex-row items-center space-x-4 mb-4">
-                {isTsCostEditing && <TsCostTableEditor />}
-                {isTsCostEditing && (
-                  <button onClick={handleTsCostEditCancel}>Cancel</button>
-                )}
-              </div>
-            </div>
-            <TsCostReportTable />
-          </div>
-          <div className="flex-auto min-w-0">
-            <div className="flex flex-col">
-              <div className="flex items-center">
-                {!isInitialDebtEditing && (
-                  <div className="mt-1">
-                    {" "}
-                    {/* Adjust the top margin if necessary */}
-                    <EditIcon
-                      className="edit-icon"
-                      onClick={handleInitialDebtEditForm}
-                    />
-                  </div>
-                )}
-
-                <div className="flex-grow">
-                  {isInitialDebtEditing && (
-                    <div className="flex gap-3">
-                      <InitialDebtEditor />
-                      <button onClick={handleInitialDebtEditCancel}>
-                        Cancel
-                      </button>
-                    </div>
+                <div className="flex flex-row justify-center items-center space-x-4 mb-4">
+                  {isFoamEditing && <FoamTableEditor />}
+                  {isFoamEditing && (
+                    <button onClick={handleFoamCancel}>Cancel</button>
                   )}
                 </div>
               </div>
 
-              <ExpenseTab />
+              <FoamSideBarTab />
+            </div>
+            <div className="flex flex-col min-w-0">
+              <h1>CHERK REPORT</h1>
+              <div>
+                {!isCherkEditing && (
+                  <EditIcon
+                    className="edit-icon "
+                    onClick={handleCherkEditForm}
+                  />
+                )}
+                <div className="flex flex-row justify-center items-center space-x-4 mb-4">
+                  {isCherkEditing && <CherkTableEditor />}
+                  {isCherkEditing && (
+                    <button onClick={handleCherkEditCancel}>Cancel</button>
+                  )}
+                </div>
+              </div>
+              <CherkReportTable />
+            </div>
+            <div className="flex flex-col min-w-0">
+              <h1>BERGAMOD REPORT</h1>
+              <div>
+                {!isBergamoEditing && (
+                  <EditIcon
+                    className="edit-icon"
+                    onClick={handleBergamoEditForm}
+                  />
+                )}
+                <div className="flex flex-row justify-center items-center space-x-4 mb-4">
+                  {isBergamoEditing && <EditedBergamoTable />}
+                  {isBergamoEditing && (
+                    <button className="" onClick={handleBergamoEditCancel}>
+                      Cancel
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              <BergamoReportTab />
+            </div>
+
+            <div className="flex-auto min-w-0">
+              <h1>MY COST REPORT</h1>
+              <div>
+                {!isMyCostEditing && (
+                  <EditIcon
+                    className="edit-icon "
+                    onClick={handleMyCostEditForm}
+                  />
+                )}
+                <div className="flex flex-row justify-center items-center space-x-4 mb-4">
+                  {isMyCostEditing && <MyCostTableEditor />}
+                  {isMyCostEditing && (
+                    <button onClick={handleMyCostEditCancel}>Cancel</button>
+                  )}
+                </div>
+              </div>
+
+              <MyCostReportTable />
+            </div>
+            <div className="flex-auto min-w-0">
+              <h1>T'S COST REPORT</h1>
+              <div>
+                {!isTsCostEditing && (
+                  <EditIcon
+                    className="edit-icon "
+                    onClick={handleTsCostEditForm}
+                  />
+                )}
+                <div className="flex flex-row items-center space-x-4 mb-4">
+                  {isTsCostEditing && <TsCostTableEditor />}
+                  {isTsCostEditing && (
+                    <button onClick={handleTsCostEditCancel}>Cancel</button>
+                  )}
+                </div>
+              </div>
+              <TsCostReportTable />
+            </div>
+            <div className="flex-auto min-w-0">
+              <div className="flex flex-col">
+                <div className="flex items-center">
+                  {!isInitialDebtEditing && (
+                    <div className="mt-1">
+                      {" "}
+                      {/* Adjust the top margin if necessary */}
+                      <EditIcon
+                        className="edit-icon"
+                        onClick={handleInitialDebtEditForm}
+                      />
+                    </div>
+                  )}
+
+                  <div className="flex-grow">
+                    {isInitialDebtEditing && (
+                      <div className="flex gap-3">
+                        <InitialDebtEditor />
+                        <button onClick={handleInitialDebtEditCancel}>
+                          Cancel
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <ExpenseTab />
+              </div>
+            </div>
+
+            <div className="flex-auto min-w-0">
+              <PersonalExpenseTab />
             </div>
           </div>
-
-          <div className="flex-auto min-w-0">
-            <PersonalExpenseTab />
-          </div>
-        </div>
+        </>
       );
     } else {
       return null;
@@ -299,7 +304,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex mt-5">
         <div className="bg-white border-r h-screen w-64 min-w-[250px] flex-shrink-0">
           {" "}
           {sprintData.map((sprint) => (
@@ -307,7 +312,9 @@ const Sidebar = () => {
               <button
                 onClick={() => handleDateClicked(sprint.id)}
                 className={`w-full text-left p-2 border-b ${
-                  selectedSprintId === sprint.id ? "bg-blue-200" : ""
+                  selectedSprintId === sprint.id
+                    ? "bg-primary bg-opacity-25"
+                    : ""
                 }`}
               >
                 {sprint.startDate}
@@ -315,7 +322,6 @@ const Sidebar = () => {
             </div>
           ))}
         </div>
-=
         <div className="flex-grow">
           {" "}
           <DisplayTables />
