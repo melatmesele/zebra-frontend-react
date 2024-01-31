@@ -4,15 +4,15 @@ const CardContent = ({ text }) => {
   return (
     <div className=" text-md my-8 ml-5 ">
       {text === "TOTAL" ? (
-        <p>this table shows bergamo </p>
+        <p> Recond table for recording total costs</p>
       ) : text === "SOLD" ? (
-        <p> this tables shows sold cherks</p>
+        <p> Records table for Cherk sold</p>
       ) : text === "TS-COST" ? (
-        <p>this table shows ts costs</p>
+        <p>T's cost record table</p>
       ) : text === "MY-COST" ? (
-        <p>this table shows my cost</p>
+        <p>Personal cost record table</p>
       ) : (
-        <p>this table shows foam</p>
+        <p>Record Foams sold over the past 10 days</p>
       )}
     </div>
   );

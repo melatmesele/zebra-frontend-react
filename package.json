@@ -19,6 +19,7 @@
     "ag-grid-react": "^31.0.0",
     "axios": "^1.6.2",
     "dayjs": "^1.11.10",
+    "flowbite": "^2.2.1",
     "js-cookie": "^3.0.5",
     "react": "^18.2.0",
     "react-datepicker": "^4.24.0",

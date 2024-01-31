@@ -100,65 +100,54 @@ const EditedBergamoTable = () => {
 
 
   return (
-    <div className="">
-      <div
-        className="space-y-3 flex flex-col  max-w-md mx-auto p-8 h-400 w-full bg-white "
+    <div className="max-w-md bg-white">
+      <form
+        className="flex flex-row items-center justify-between space-x-4"
         action="#"
         method="POST"
       >
-        <div className="mt-[3px] ">
-          <div className="flex items-center justify-between">
-            <label className=" text-lg pt-2">Select Date</label>
-          </div>
+        <div>
+          <label className="block text-lg mb-1">Select Date</label>
           <DatePicker
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
-            className="border-color-rgb(203 213 225) mt-2 rounded w-[195px] h-[30px] "
+            className="border-color-rgb(203 213 225) rounded w-full h-[30px]"
             dateFormat="yyyy/MM/dd"
             minDate={minDate}
             maxDate={maxDate}
           />
         </div>
 
-        <div className="mt-[9px]">
-          <div className="flex items-center justify-between">
-            <label className=" text-lg pt-2">Sold:</label>
-          </div>
-          <div className="mt-2">
-            <input
-              type="number"
-              value={sold}
-              className="w-[195px] h-[30px] p-2 rounded"
-              onChange={(e) => setSold(e.target.value)}
-            />
-          </div>
+        <div>
+          <label className="block text-lg mb-1">Sold:</label>
+          <input
+            type="number"
+            value={sold}
+            className="w-full h-[30px] p-2 rounded"
+            onChange={(e) => setSold(e.target.value)}
+          />
         </div>
 
         <div>
-          <div className="flex items-center justify-between">
-            <label className="text-lg pt-2">Bergamo:</label>
-          </div>
-          <div className="mt-2">
-            <input
-              type="number"
-              value={bergamod}
-              className="w-[195px] h-[30px] p-2 rounded"
-              onChange={(e) => setBergamod(e.target.value)}
-            />
-          </div>
+          <label className="block text-lg mb-1">Bergamo:</label>
+          <input
+            type="number"
+            value={bergamod}
+            className="w-full h-[30px] p-2 rounded"
+            onChange={(e) => setBergamod(e.target.value)}
+          />
         </div>
 
-        <div>
-          <button
-            className="ml-[105px] h-[30px] w-[90px] rounded bg-primary"
-            onClick={handleBergamoReportData}
-          >
-            Save
-          </button>
-        </div>
-      </div>
+        <button
+          className="h-[30px] px-4 rounded bg-primary"
+          onClick={handleBergamoReportData}
+        >
+          Save
+        </button>
+      </form>
     </div>
   );
+
 }
 
 export default EditedBergamoTable
