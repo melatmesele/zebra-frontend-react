@@ -51,20 +51,28 @@ const StartDatePicker = () => {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DemoContainer components={["DatePicker"]}>
             {!isSprintActive && (
-              <DatePicker
-                label="Start The Sprint"
-                selected={startDate}
-                className="border rounded w-[20px]"
-                calendarClassName="w-320"
-                dayClassName={() => "text-blue-500"}
-                onChange={handleDateChange}
-              />
+              <div className=" fixed bottom-20 left-4">
+                <DatePicker
+                  label="Start The Sprint"
+                  selected={startDate}
+                  className="border rounded w-[12rem]"
+                  calendarClassName="w-320"
+                  dayClassName={() => "text-blue-500"}
+                  onChange={handleDateChange}
+                />
+              </div>
             )}
-            {isSprintActive && 
+            {isSprintActive && (
               <div>
-                <DeactivateButton />  
-                <InitialDebtForm/>
-              </div>}
+                <div className="fixed right-2 top-20">
+                  <InitialDebtForm />
+                </div>
+
+                <div className="fixed bottom-4 left-4">
+                  <DeactivateButton />
+                </div>
+              </div>
+            )}
           </DemoContainer>
         </LocalizationProvider>
       </div>

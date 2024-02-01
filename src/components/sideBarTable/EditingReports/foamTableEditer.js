@@ -76,58 +76,48 @@ const FoamTableEditor = () => {
 
 
   return (
-    <div className="">
+    <div className="max-w-md  bg-white">
       <div
-        className="space-y-3 flex flex-col  max-w-md mx-auto p-8 h-400 w-full bg-white "
+        className="flex flex-row items-center space-x-3 w-full"
         action="#"
         method="POST"
       >
-        <div className="mt-[3px] ">
-          <div className="flex items-center justify-between">
-            <label className=" text-lg pt-2">Select Date</label>
-          </div>
+        <div className="flex-1">
+          <label className="block text-lg">Select Date</label>
           <DatePicker
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
-            className="border-color-rgb(203 213 225) mt-2 rounded w-[195px] h-[30px] "
+            className="border-color-rgb(203 213 225) rounded w-full h-[30px]"
             dateFormat="yyyy/MM/dd"
             minDate={minDate}
             maxDate={maxDate}
           />
         </div>
 
-        <div className="mt-[9px]">
-          <div className="flex items-center justify-between">
-            <label className=" text-lg pt-2">Percentage:</label>
-          </div>
-          <div className="mt-2">
-            <input
-              type="number"
-              value={profit}
-              className="w-[195px] h-[30px] p-2 rounded"
-              onChange={(e) => setProfit(e.target.value)}
-            />
-            {error && <p className="text-red-500 text-sm">{error}</p>}
-          </div>
+        <div className="flex-1">
+          <label className="block text-lg">Percentage:</label>
+          <input
+            type="number"
+            value={profit}
+            className="w-full h-[30px] p-2 rounded"
+            onChange={(e) => setProfit(e.target.value)}
+          />
+          {error && <p className="text-red-500 text-sm">{error}</p>}
         </div>
 
-        <div>
-          <div className="flex items-center justify-between">
-            <label className="text-lg pt-2">Sold:</label>
-          </div>
-          <div className="mt-2">
-            <input
-              type="number"
-              value={sold}
-              className="w-[195px] h-[30px] p-2 rounded"
-              onChange={(e) => setSold(e.target.value)}
-            />
-          </div>
+        <div className="flex-1">
+          <label className="block text-lg">Sold:</label>
+          <input
+            type="number"
+            value={sold}
+            className="w-full h-[30px] p-2 rounded"
+            onChange={(e) => setSold(e.target.value)}
+          />
         </div>
 
         <div>
           <button
-            className="ml-[105px] h-[30px] w-[90px] rounded bg-primary"
+            className="h-[30px] px-4 rounded bg-primary"
             onClick={handleFoamReportData}
           >
             Save
@@ -136,6 +126,7 @@ const FoamTableEditor = () => {
       </div>
     </div>
   );
+
 };
 
 export default FoamTableEditor;

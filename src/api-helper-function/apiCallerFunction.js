@@ -580,3 +580,38 @@ export const AddInitialDebtData = async (sprintId, debt) => {
   }
 };
 
+
+// In your API helper functions
+export const downloadSprintReport = async (sprintId) => {
+  const token = localStorage.getItem("token");
+  const url = `http://localhost:8000/api/sprint/download-report/${sprintId}`;
+
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
+        "Accept": "application/pdf",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to download report.");
+    }
+
+    const blob = await response.blob();
+    const downloadUrl = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.setAttribute('download', `sprintId-${sprintId}.pdf`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.URL.revokeObjectURL(downloadUrl);
+  } catch (error) {
+    console.error("Error downloading the sprint report:", error);
+    throw error;
+  }
+};
+
