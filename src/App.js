@@ -9,7 +9,8 @@ import HomePage from "./components/HomePage/homePage";
 
 import { AuthProvider } from "./index";
 import SideBar from "./components/sideBar";
-import TableDisplay from "./components/cards/tableDisplay";
+// import TableDisplay from "./components/cards/tableDisplay";
+import { RenderSelectedTable } from "./components/cards/cardDisplay";
 import LogoutButton from "./components/auth/logOut";
 import NavBar from "./components/HomePage/navBar";
 
@@ -53,7 +54,7 @@ function App() {
           path="/:selectedCard"
           element={
             <AuthProvider>
-              <TableDisplay />
+              <RenderSelectedTable />
             </AuthProvider>
           }
         />
