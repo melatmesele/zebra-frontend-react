@@ -106,7 +106,7 @@ const FoamTableEditor = () => {
         </div>
 
         <div className="flex-1">
-          <label className="block text-lg">Sold:</label>
+          <label className="block text-lg">Bought:</label>
           <input
             type="number"
             value={sold}
