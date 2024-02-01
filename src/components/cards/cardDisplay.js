@@ -4,7 +4,7 @@ import FoamDataTable from "../tables/foamTable";
 import CherkDataTable from "../tables/cherkTable";
 import MyCostDataTable from "../tables/myCostTable";
 import TsCostDataTable from "../tables/tsCostTable";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { setSelectedData } from "../store/selectedCard";
 import BergamoDataTable from "../tables/bergamoTable";
 import { useParams, useNavigate } from "react-router-dom";
