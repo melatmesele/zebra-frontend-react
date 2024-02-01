@@ -69,7 +69,7 @@ const TsCostTableEditor = () => {
 
   return (
     <div className="max-w-md bg-white">
-      <form
+      <div
         className="flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0 sm:space-x-2"
         action="#"
         method="POST"
@@ -104,10 +104,9 @@ const TsCostTableEditor = () => {
             Save
           </button>
         </div>
-      </form>
+      </div>
     </div>
   );
-
 };
 
 export default TsCostTableEditor;
