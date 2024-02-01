@@ -108,27 +108,32 @@ const Sidebar = () => {
      
 
       try {
-
         const reportData = await getReportData(selectedSprintId);
         const minDate = new Date(
           Math.min(...reportData.totals.map((item) => new Date(item.date)))
         );
         const maxDate = new Date(
           Math.max(...reportData.totals.map((item) => new Date(item.date)))
-        ); 
+        );
         dispatch(setSprintIdd(selectedSprintId));
 
         dispatch(setMinDate(minDate));
-        dispatch(setMaxDate(maxDate));   
+        dispatch(setMaxDate(maxDate));
         dispatch(setFoamReport(reportData.foams));
         dispatch(setCherkReport(reportData.cherks));
-        
+
         dispatch(setTotalsReport(reportData.totals));
         dispatch(setMyCostReport(reportData.my_costs));
         dispatch(setTsCostReport(reportData.ts_costs));
         dispatch(setPersonalExpenseReport(reportData.PersonalProfit));
         dispatch(setExpenseReport(reportData.net));
-        
+        // Reset editing states
+        setIsFoamEditing(false);
+        setIsCherkEditing(false);
+        setIsBergamoEditing(false);
+        setIsMyCostEditing(false);
+        setIsTsCostEditing(false);
+        setIsInitialDebtEditing(false);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -168,7 +173,7 @@ const Sidebar = () => {
             <div className="flex-auto min-w-0">
               <h1>FOAM REPORT</h1>
               <div>
-                {!isFoamEditing && (
+                { !isFoamEditing && (
                   <EditIcon
                     className="edit-icon "
                     onClick={handleFoamEditForm}
