@@ -1,7 +1,8 @@
 // POST request to the Laravel backend
+const api = "https://zerba-laravel-6ah2qrset-fikremariams-projects.vercel.app";
 export const register = async (formData) => {
   try {
-    const response = await fetch("http://localhost:8000/api/register", {
+    const response = await fetch(`${api}/api/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,11 +28,11 @@ export const register = async (formData) => {
         //LOGIN
 export const Login = async (formData) => {
   try {
-    const response = await fetch("http://localhost:8000/api/login", {
+    const response = await fetch(`${api}/api/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify(formData),
     });
@@ -60,10 +61,10 @@ export const Logout = async () => {
   const token = localStorage.getItem("token");
   try {
 
-    const response = await fetch("http://localhost:8000/api/logout", {
+    const response = await fetch(`${api}/api/logout`, {
       method: "GET",
       headers: {
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     });
@@ -89,12 +90,12 @@ export const SelectedDate = async (startDate) => {
 
   try {
    
-    const response = await fetch("http://localhost:8000/api/sprint", {
+    const response = await fetch(`${api}/api/sprint`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${token}`, // Assuming the user object contains a token
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`, // Assuming the user object contains a token
       },
       body: JSON.stringify({ startDate }),
     });
@@ -122,12 +123,12 @@ export const GetFoamData = async () => {
 
   try {
     
-    const response = await fetch("http://localhost:8000/api/foams", {
+    const response = await fetch(`${api}/api/foams`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -154,12 +155,12 @@ export const AddFoamData = async (id, sold, profit) => {
  
   try {
    
-    const response = await fetch(`http://localhost:8000/api/foams/${id}`, {
+    const response = await fetch(`${api}/api/foams/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
@@ -180,12 +181,12 @@ export const getCherkData = async () => {
   try {
       const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:8000/api/cherks", {
+    const response = await fetch(`${api}/api/cherks`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -207,12 +208,12 @@ export const addCherkData = async (id, sold, profit) => {
   try {
        const token = localStorage.getItem("token");
 
-    const response = await fetch(`http://localhost:8000/api/cherks/${id}`, {
+    const response = await fetch(`${api}/api/cherks/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
@@ -234,12 +235,12 @@ export const getMyCostData = async () => {
   try {
        const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:8000/api/my-costs", {
+    const response = await fetch(`${api}/api/my-costs`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -261,12 +262,12 @@ export const addMyCostData = async (id, cost) => {
   try {
        const token = localStorage.getItem("token");
 
-    const response = await fetch(`http://localhost:8000/api/my-costs/${id}`, {
+    const response = await fetch(`${api}/api/my-costs/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
@@ -289,12 +290,12 @@ export const getTsCostData = async () => {
   try {
        const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:8000/api/ts-costs", {
+    const response = await fetch(`${api}/api/ts-costs`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -316,12 +317,12 @@ export const addTsCostData = async (id, cost) => {
   try {
        const token = localStorage.getItem("token");
 
-    const response = await fetch(`http://localhost:8000/api/ts-costs/${id}`, {
+    const response = await fetch(`${api}/api/ts-costs/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
@@ -344,12 +345,12 @@ export const getInactivateSprintData = async () => {
   try {
        const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:8000/api/inactive-sprints", {
+    const response = await fetch(`${api}/api/inactive-sprints`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -374,17 +375,14 @@ export const getReportData = async (id) => {
   try {
        const token = localStorage.getItem("token");
 
-    const response = await fetch(
-      `http://localhost:8000/api/sprint-report/${id}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-          "Authorization": `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await fetch(`${api}/api/sprint-report/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (!response.ok) {
       throw new Error("Failed to fetch data from the API");
@@ -403,12 +401,12 @@ export const getBergamoData = async () => {
   try {
       const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:8000/api/totals", {
+    const response = await fetch(`${api}/api/totals`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -430,12 +428,12 @@ export const addBergamoData = async (id, sold,bergamod) => {
   try {
        const token = localStorage.getItem("token");
 
-    const response = await fetch(`http://localhost:8000/api/totals/${id}`, {
+    const response = await fetch(`${api}/api/totals/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
@@ -459,17 +457,14 @@ export const addDeactivateSprintData = async (id) => {
   try {
        const token = localStorage.getItem("token");
 
-    const response = await fetch(`http://localhost:8000/api/sprint/deactivate/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        
-      }
-    );
+    const response = await fetch(`${api}/api/sprint/deactivate/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (!response.ok) {
       throw new Error("Failed to update foam data");
@@ -490,17 +485,14 @@ export const getExpenseData = async () => {
   try {
        const token = localStorage.getItem("token");
 
-    const response = await fetch(
-      "http://localhost:8000/api/sprint/expense-data",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await fetch(`${api}/api/sprint/expense-data`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (!response.ok) {
       throw new Error("Failed to fetch data from the API");
@@ -520,17 +512,14 @@ export const getPersonalExpenseData = async () => {
   try {
        const token = localStorage.getItem("token");
 
-    const response = await fetch(
-      "http://localhost:8000/api/sprint/personal-expense",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await fetch(`${api}/api/sprint/personal-expense`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (!response.ok) {
       throw new Error("Failed to fetch data from the API");
@@ -555,7 +544,7 @@ export const AddInitialDebtData = async (sprintId, debt) => {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      `http://localhost:8000/api/sprint-debt/${sprintId}`,
+      `${api}/api/sprint-debt/${sprintId}`,
 
       {
         method: "PUT",
@@ -584,7 +573,7 @@ export const AddInitialDebtData = async (sprintId, debt) => {
 // In your API helper functions
 export const downloadSprintReport = async (sprintId) => {
   const token = localStorage.getItem("token");
-  const url = `http://localhost:8000/api/sprint/download-report/${sprintId}`;
+  const url = `${api}/api/sprint/download-report/${sprintId}`;
 
   try {
     const response = await fetch(url, {
