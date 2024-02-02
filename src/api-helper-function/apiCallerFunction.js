@@ -1,5 +1,5 @@
 // POST request to the Laravel backend
-const api = "zerba-laravel-a7ot5wwlq-fikremariams-projects.vercel.app";
+const api = "https://zerba-laravel-gixzt1a2w-fikremariams-projects.vercel.app";
 export const register = async (formData) => {
   try {
     const response = await fetch(`${api}/api/register`, {
