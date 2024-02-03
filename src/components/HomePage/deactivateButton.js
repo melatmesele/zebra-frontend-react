@@ -145,16 +145,16 @@ const DeactivateButton = () => {
         dispatch(setMyCostExpense(0));
         dispatch(setMyProfitExpense(0));
         dispatch(setNetProfitExpense(0));
-        // dispatch(setStartDateExpenses(startDate));
-        // dispatch(setEndDateExpenses(endDate));
+        dispatch(setStartDateExpenses(0));
+        dispatch(setEndDateExpenses(0));
         dispatch(setBnetData(0));
         dispatch(setSnetData(0));
         dispatch(setTotNetData(0));
-        // dispatch(setStartDateExpense(""));
-        // dispatch(setEndDateExpense(""));
+        dispatch(setStartDateExpense(0));
+        dispatch(setEndDateExpense(0));
 
 
-        // dispatch(setInitialDebtData(""));
+        dispatch(setInitialDebtData(0));
 
 
 

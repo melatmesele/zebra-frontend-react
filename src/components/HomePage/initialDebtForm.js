@@ -17,6 +17,8 @@ const InitialDebtForm = () => {
     const data = await getExpenseData();
 
     dispatch(setTotNetData(data.net.TotNet));
+    setDebt("")
+
   };
 
   return (
