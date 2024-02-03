@@ -21,7 +21,7 @@ const StartDatePicker = () => {
   const isSprintActive = useSelector((state) => state.sprint.isSprintActive);
   const startDate = useSelector((state) => state.sprint.startDate);
   const [selectedDate, setSelectedDate] = useState(null); // State to store the selected date
-
+  const [error, setError] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,31 +37,31 @@ const StartDatePicker = () => {
     fetchExpenseData();
   }, [dispatch]);
 
-  async function handleDateChange(startDate){
+  async function handleDateChange(startDate) {
     const formattedDate = dayjs(startDate).format("YYYY-MM-DD");
     // const data = await SelectedDate(formattedDate);
 
     // dispatch(setSprintId(data.id));
     setSelectedDate(formattedDate); // Update the selected date in the state
-  };
+  }
 
   const handleSendDateToBackend = async () => {
-    // Check if a date is selected before sending to the backend
-    if (selectedDate) {
-      try {
-        // Call your API function to send the selected date to the backend
+    try {
+      if (selectedDate) {
         const data = await SelectedDate(selectedDate);
-
-        
         dispatch(setSprintId(data.id));
+        setSelectedDate("");
+        dispatch(setIsSprintActive(true));
+        setError(null);
 
-        // Optionally, you can perform additional actions after sending the date
         console.log("Date sent to the backend successfully!");
-      } catch (error) {
-        console.error("Error sending date to the backend:", error);
+      } else {
+        setError("Please select a date before sending to the backend.");
+       
+
       }
-    } else {
-      console.warn("Please select a date before sending to the backend.");
+    } catch (error) {
+      setError("Error sending date to the backend: " + error.message);
     }
   };
 
@@ -83,6 +83,7 @@ const StartDatePicker = () => {
                 <button onClick={handleSendDateToBackend}>
                   Start The Sprint
                 </button>
+                {error && <p className="text-red-500">{error}</p>}
               </div>
             )}
             {isSprintActive && (
