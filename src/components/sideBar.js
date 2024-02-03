@@ -309,7 +309,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="flex mt-5 overflow-auto">
+      <div className="flex mt-20 lg:pt-10 overflow-auto">
         <div className="bg-white border-r h-screen w-64 min-w-[250px] flex-shrink-0">
           {" "}
           {sprintData.map((sprint) => (

@@ -5,8 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./components/store/store";
 import { Provider, useDispatch } from "react-redux";
-import TiltedEllipse from "./components/HomePage/ellipse";
-import Logo from "./components/HomePage/logo";
 import { useNavigate } from "react-router-dom";
 import { setToken } from "./components/store/loginSlice";
 export const AuthProvider = ({ children }) => {
@@ -27,11 +25,6 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <div className="overflow-x-hidden">
-        <div className="flex flex-row space-x-4 mt-4">
-          <a href="/" className="w-1/5 mr-2">
-            <Logo />
-          </a>
-        </div>
         <App />
       </div>
     </Provider>

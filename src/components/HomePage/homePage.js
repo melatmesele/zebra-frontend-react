@@ -6,7 +6,7 @@ import ExpenseTab from "../tables/expenseTable.js";
 import PersonalExpenseTab from "../tables/personalExpenseTable.js";
 const HomePage = () => {
   return (
-    <div className="flex flex-col min-h-screen gap-10 mt-20 md:mt-10 sm:mt-6">
+    <div className="flex flex-col min-h-screen gap-4 mt-32 lg:pt-10 md:pt-4 md:mt-20 sm:mt-6">
       <div>
         <CardApp />
       </div>
