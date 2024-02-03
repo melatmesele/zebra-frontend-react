@@ -67,7 +67,7 @@ const MyCostDataTable = () => {
   };
 
   return (
-    <div className="overflow-x-auto bg-white w-full md:w-[719px] mx-auto mt-10 md:ml-[310px] md:mt-[56px] border-4 border-primary">
+    <div className="overflow-x-auto bg-white w-full md:w-[719px] mx-auto mt-10 md:ml-[310px] md:mt-[12rem] border-4 border-primary">
       <div className="text-2xl ml-4 md:ml-[30px] sm:mx-auto">
         My-Cost Data Table
       </div>
