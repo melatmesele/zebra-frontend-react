@@ -16,7 +16,7 @@ const HomePage = () => {
         <PersonalExpenseTab />
       </div>
 
-      <div className="fixed bottom-4 left-4">
+      <div className="w-full">
         <StartDatePicker />
       </div>
     </div>

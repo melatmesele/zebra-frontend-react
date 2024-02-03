@@ -22,7 +22,7 @@ const InitialDebtForm = () => {
   return (
     <div className="">
       <div
-        className="space-y-3 flex flex-col  max-w-md mx-auto p-8 h-400 w-full bg-white "
+        className="space-y-3 flex flex-col  max-w-md mx-auto h-auto w-auto bg-white "
         action="#"
         method="POST"
       >
@@ -45,7 +45,7 @@ const InitialDebtForm = () => {
             className="ml-[105px] h-[30px] w-[90px] rounded bg-primary"
             onClick={handleSendData}
           >
-            Save
+            Add
           </button>
         </div>
       </div>

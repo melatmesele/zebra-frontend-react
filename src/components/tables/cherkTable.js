@@ -76,8 +76,10 @@ const CherkDataTable = () => {
 
   return (
     <div className="bg-white w-full md:w-[719px] mx-auto mt-10 md:ml-[310px] md:mt-[56px] border-4 border-primary">
-      <div className="text-2xl ml-4 md:ml-[30px]">Cherk Data Table</div>
-      <div className="flex">
+      <div className="text-2xl ml-4 md:ml-[30px] sm:mx-auto">
+        Cherk Data Table
+      </div>
+      <div className="flex flex-wrap items-center justify-center">
         <div className="">
           <div
             className="space-y-3 flex flex-col  max-w-md mx-auto p-8 h-400 w-full bg-white "
@@ -182,7 +184,7 @@ const CherkTab = () => {
     return { totalSold, totalPercentage, grandTotal };
   };
   return (
-    <div>
+    <div className="overflow-x-auto">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>

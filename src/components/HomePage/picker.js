@@ -46,12 +46,12 @@ const StartDatePicker = () => {
   }
 
   return (
-    <div className="container">
-      <div className=" w-auto h-auto ">
+    <div className=" w-full">
+      <div className=" w-full h-auto ">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DemoContainer components={["DatePicker"]}>
             {!isSprintActive && (
-              <div className=" fixed bottom-20 left-4">
+              <div className="fixed bottom-10 left-4">
                 <DatePicker
                   label="Start The Sprint"
                   selected={startDate}
@@ -63,13 +63,12 @@ const StartDatePicker = () => {
               </div>
             )}
             {isSprintActive && (
-              <div>
-                <div className="fixed right-2 top-20">
-                  <InitialDebtForm />
-                </div>
-
-                <div className="fixed bottom-4 left-4">
+              <div className="w-full flex flex-row flex-wrap justify-between p-4">
+                <div className="">
                   <DeactivateButton />
+                </div>
+                <div className="">
+                  <InitialDebtForm />
                 </div>
               </div>
             )}

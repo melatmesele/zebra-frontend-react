@@ -66,8 +66,10 @@ const BergamoDataTable = () => {
 
   return (
     <div className="bg-white w-full md:w-[800px] mx-auto mt-10 md:ml-[310px] md:mt-[56px] border-4 border-primary">
-      <div className="text-2xl ml-4 md:ml-[30px]">Total Data Table</div>
-      <div className="flex">
+      <div className="text-2xl ml-4 md:ml-[30px] sm:mx-auto">
+        Total Data Table
+      </div>
+      <div className="flex flex-wrap items-center justify-center">
         <div className="">
           <div
             className="space-y-3 flex flex-col  max-w-md mx-auto p-8 h-400 w-full bg-white "

@@ -68,8 +68,10 @@ const MyCostDataTable = () => {
 
   return (
     <div className="overflow-x-auto bg-white w-full md:w-[719px] mx-auto mt-10 md:ml-[310px] md:mt-[56px] border-4 border-primary">
-      <div className="text-2xl ml-4 md:ml-[30px]">My-Cost Data Table</div>
-      <div className="flex space-x-5">
+      <div className="text-2xl ml-4 md:ml-[30px] sm:mx-auto">
+        My-Cost Data Table
+      </div>
+      <div className="flex flex-wrap items-center justify-center space-x-5">
         <div className="">
           <div
             className="space-y-3 flex flex-col  max-w-md mx-auto p-8 h-400 w-full bg-white "
@@ -156,7 +158,7 @@ const MyCostTab = () => {
     return { grandTotal };
   };
   return (
-    <div>
+    <div className="overflow-x-auto">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
