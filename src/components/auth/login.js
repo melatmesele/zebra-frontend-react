@@ -101,7 +101,7 @@ const UserLogin = () => {
                 </button>
               </div>
             </form>
-            <p class="text-lg font-light text-gray-500 dark:text-gray-400">
+            {/* <p class="text-lg font-light text-gray-500 dark:text-gray-400">
               Don’t have an account yet?{" "}
               <a
                 href="/register"
@@ -109,7 +109,7 @@ const UserLogin = () => {
               >
                 Sign up
               </a>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
