@@ -28,14 +28,15 @@ const NavBar = () => {
     <div className="w-full fixed top-0 right-0 z-50">
       <div className="flex justify-end mr-8 md:mr-[69px] items-center justify-between">
         <div className="flex flex-row space-x-4 mt-4">
-          <Link to="/" className="w-1/4 mr-2">
+          <Link to="/" className="w-2/3 sm:w-1/4 mr-2">
             <img
-              className="transform h-full w-full p-3 rounded-lg object-cover flex justify-center"
+              className="h-auto w-full sm:w-auto sm:h-full p-3 rounded-lg object-cover"
               src={finalLogo}
               alt=""
             />
           </Link>
         </div>
+
         <ul className="flex space-x-4 justify-end sm:space-x-8 text-md sm:text-2xl">
           <li className={isActive("/") ? "border-primary border-b-2" : ""}>
             <a href="/">Home</a>{" "}
